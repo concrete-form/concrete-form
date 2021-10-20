@@ -16,12 +16,14 @@
 </div>
 
 <div align="center">
-  <!-- 
+  <a href="https://ci.appveyor.com/project/kegi/concrete-form/history">
+    <img alt="test coverage" style="margin:3px"
+    src="https://img.shields.io/appveyor/build/kegi/concrete-form?style=flat-square" />
+  </a>
   <a href="https://coveralls.io/github/concrete-form/concrete-form">
     <img alt="test coverage" style="margin:3px"
     src="https://img.shields.io/coveralls/github/concrete-form/concrete-form?style=flat-square" />
   </a>
-  -->
   <a href="https://bundlephobia.com/package/@concrete-form/core">
     <img alt="bundle size" style="margin:3px" 
     src="https://img.shields.io/bundlephobia/min/@concrete-form/core?label=size&style=flat-square&v=2" />
