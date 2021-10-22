@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  popular form libraries <strong>bootstrapped with UI kits</strong>
+  A <strong>UI implementation</strong> of the most popular form libraries for <strong>React</strong>
 </p>
 
 ---
@@ -37,42 +37,39 @@
 ---
 
 ## Example
-> [Material-UI](https://mui.com/) text input bootstrapped with [React hook form](https://react-hook-form.com)
+> [Material-UI](https://mui.com/) [TextField](https://mui.com/components/text-fields/) connected to [React hook form](https://react-hook-form.com)
 
 ```jsx
-import { Form, YupSchema } from '@concrete-form/react-hook-form'
+import Form from '@concrete-form/addon-react-hook-form'
 import { Input } from '@concrete-form/material-ui'
+import { useForm } from 'react-hook-form'
 
-const Example = () => (
-  <Form data={...} onSubmit={...} schema={new YupSchema(...)}>
-    <Input name="foo" />
-  </Form>
-)
+const Example = () => {
+  const form = useForm()
+  return (
+    <Form form={form} onSubmit={...}>
+      <Input name="foo" />
+    </Form>
+  )
+}
 ```
 
 ## **Concrete Form** in a nutshell
-1) Select your form provider (ex `React Hook Form`).
-2) Select your UI kit (ex `Material-UI`).
+1) Select the form provider you're using (ex `React Hook Form`).
+2) Select the UI kit you're using (ex `Material-UI`).
 3) Start working your forms, `Concrete Form` connects all the libraries together
 
-<br /><br />
+## What this library is NOT
+1) **Concrete Form** is **NOT** a form library, just an implementation of existing libraries
+2) **Concrete Form** is **NOT** changing the form behavior
+3) **Concrete Form** is **NOT** making any design decision for you when rendering the controls
+
+<br />
 
 ---
 
-<br /><br />
+<br />
 
-## Available form providers
-- React hook form (planned)
-- Formik (planned)
-## Available UI kits
-- Native HTML inputs
-- Material-UI (planned)
-- Materialize (planned)
-- Bootstrap (planned)
-
-## Available validation schemas
-- Yup (planned)
-- Joi (planned)
 
 ## Work in progress
 This library is not implemented yet. Poke me if you're curious and want to contribute !
