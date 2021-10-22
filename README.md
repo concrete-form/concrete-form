@@ -40,7 +40,7 @@
 > [Material-UI](https://mui.com/) [TextField](https://mui.com/components/text-fields/) connected to [React hook form](https://react-hook-form.com)
 
 ```jsx
-import Form from '@concrete-form/addon-react-hook-form'
+import Form from '@concrete-form/react-hook-form'
 import { Input } from '@concrete-form/material-ui'
 import { useForm } from 'react-hook-form'
 
