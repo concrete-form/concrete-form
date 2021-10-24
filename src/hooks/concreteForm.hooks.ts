@@ -1,9 +1,7 @@
 import { useConcreteFormHandler } from '../context/concreteForm.context'
 
 export const useFormState = () => useConcreteFormHandler().getFormState()
-
 export const useControlState = (name: string) => useConcreteFormHandler().getControlState(name)
-
 export const useControlProps = (name: string, options?: any) => useConcreteFormHandler().getControlProps(name, options)
 
 export const useControlActions = (name: string) => {

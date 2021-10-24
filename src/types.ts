@@ -1,3 +1,7 @@
+import Controls from './Controls.enum'
+
+/* form */
+
 export type ConcreteFormContext = {
   config: ConcreteFormConfig
   formHandler: FormHandler
@@ -20,6 +24,13 @@ export type FormState = {
   wasSubmitted: boolean
 }
 
+export type ConcreteFormProps = {
+  formProps?: React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
+  noValidate?: boolean
+} & ConcreteFormConfig
+
+/* controls */
+
 export type ControlState = {
   value: any
   errors: string[]
@@ -31,7 +42,36 @@ export type ControlProps = {
   fieldProps?: any
 }
 
-export type ConcreteFormProps = {
-  formProps?: React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
-  noValidate?: boolean
-} & ConcreteFormConfig
+export type InputProps = ControlProps
+export type TextProps = ControlProps
+export type TextareaProps = ControlProps
+export type NumberProps = ControlProps
+export type PasswordProps = ControlProps
+export type AutocompleteProps = ControlProps
+export type CheckboxProps = ControlProps
+export type RadioProps = ControlProps
+export type SelectProps = ControlProps
+export type DateProps = ControlProps
+export type DateRangeProps = ControlProps
+export type TimeProps = ControlProps
+export type ToggleSwitchProps = ControlProps
+export type SliderProps = ControlProps
+export type SubmitButtonProps = ControlProps
+
+export type ControlsComponents = {
+  [Controls.Input]: React.ReactNode
+  [Controls.Text]: React.ReactNode
+  [Controls.Textarea]: React.ReactNode
+  [Controls.Number]: React.ReactNode
+  [Controls.Password]: React.ReactNode
+  [Controls.Autocomplete]: React.ReactNode
+  [Controls.Checkbox]: React.ReactNode
+  [Controls.Radio]: React.ReactNode
+  [Controls.Select]: React.ReactNode
+  [Controls.Date]: React.ReactNode
+  [Controls.DateRange]: React.ReactNode
+  [Controls.Time]: React.ReactNode
+  [Controls.ToggleSwitch]: React.ReactNode
+  [Controls.Slider]: React.ReactNode
+  [Controls.SubmitButton]: React.ReactNode
+}
