@@ -21,7 +21,8 @@ export type FormHandler = {
 export type FormState = {
   isValid: boolean
   isSubmitting: boolean
-  wasSubmitted: boolean
+  isSubmitted: boolean
+  hasErrors: boolean
 }
 
 export type ConcreteFormProps = {
@@ -56,7 +57,10 @@ export type DateRangeProps = ControlProps
 export type TimeProps = ControlProps
 export type ToggleSwitchProps = ControlProps
 export type SliderProps = ControlProps
-export type SubmitButtonProps = ControlProps
+
+export type SubmitButtonProps = {
+  displayLoading?: boolean
+}
 
 export type ControlsComponents = {
   [Controls.Input]: React.ReactNode
