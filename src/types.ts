@@ -9,6 +9,12 @@ export type ConcreteFormContext = {
 
 export type ConcreteFormConfig = {
   language?: string
+  layout?: {
+    control?: React.ElementType
+    errors?: React.ElementType<{errors: string[]}>
+    labelledControl?: React.ElementType
+    label?: React.ElementType
+  }
 }
 
 export type FormHandler = {
@@ -38,25 +44,52 @@ export type ControlState = {
   isTouched: boolean
 }
 
-export type ControlProps = {
+export type ControlBaseProps = {
   name: string
   fieldProps?: any
+  required?: boolean
+  disabled?: boolean
 }
 
-export type InputProps = ControlProps
-export type TextProps = ControlProps
-export type TextareaProps = ControlProps
-export type NumberProps = ControlProps
-export type PasswordProps = ControlProps
-export type AutocompleteProps = ControlProps
-export type CheckboxProps = ControlProps
-export type RadioProps = ControlProps
-export type SelectProps = ControlProps
-export type DateProps = ControlProps
-export type DateRangeProps = ControlProps
-export type TimeProps = ControlProps
-export type ToggleSwitchProps = ControlProps
-export type SliderProps = ControlProps
+export type LabelledChoice = {
+  value: string
+  label: string
+}
+
+export type Choice = string | LabelledChoice
+
+export type GroupChoices = {
+  group: string
+  options: Array<Choice | GroupChoices>
+}
+
+type SelectOptions = {
+  options?: Array<Choice | GroupChoices>
+  allowEmpty?: boolean
+}
+
+type CheckboxOptions = {
+  options?: Choice[]
+  single?: boolean
+  orientation?: 'horizontal' | 'vertical'
+}
+
+type RadioOptions = {
+  options?: Choice[]
+  orientation?: 'horizontal' | 'vertical'
+}
+
+export type InputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type AutocompleteProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type FileInputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type TextareaProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
+export type SelectProps = ControlBaseProps & SelectOptions & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+export type CheckboxProps = ControlBaseProps & CheckboxOptions & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type RadioProps = ControlBaseProps & RadioOptions & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type DateProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type TimeProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type ToggleSwitchProps = ControlBaseProps
+export type SliderProps = ControlBaseProps
 
 export type SubmitButtonProps = {
   displayLoading?: boolean
@@ -64,16 +97,13 @@ export type SubmitButtonProps = {
 
 export type ControlsComponents = {
   [Controls.Input]: React.ReactNode
-  [Controls.Text]: React.ReactNode
   [Controls.Textarea]: React.ReactNode
-  [Controls.Number]: React.ReactNode
-  [Controls.Password]: React.ReactNode
   [Controls.Autocomplete]: React.ReactNode
+  [Controls.FileInput]: React.ReactNode
   [Controls.Checkbox]: React.ReactNode
   [Controls.Radio]: React.ReactNode
   [Controls.Select]: React.ReactNode
   [Controls.Date]: React.ReactNode
-  [Controls.DateRange]: React.ReactNode
   [Controls.Time]: React.ReactNode
   [Controls.ToggleSwitch]: React.ReactNode
   [Controls.Slider]: React.ReactNode
