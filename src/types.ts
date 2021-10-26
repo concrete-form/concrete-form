@@ -51,22 +51,26 @@ export type ControlBaseProps = {
   disabled?: boolean
 }
 
-export type LabelledChoice = {
+export type LabelledChoice<C> = {
   value: string
   label: string
+  props?: React.DetailedHTMLProps<React.InputHTMLAttributes<C>, C>
 }
 
-export type Choice = string | LabelledChoice
+export type Choice<C> = string | LabelledChoice<C>
 
-export type GroupChoices = {
+export type GroupChoices<G, C> = {
   group: string
-  options: Array<Choice | GroupChoices>
+  options: Array<Choice<C> | GroupChoices<G, C>>
+  props?: React.DetailedHTMLProps<React.InputHTMLAttributes<G>, G>
 }
 
-export type SingleLevelGroupChoices = {
+export type SingleLevelGroupChoices<C> = {
   group: string
-  options: Choice[]
+  options: Array<Choice<C>>
 }
+
+type Orientation = 'horizontal' | 'vertical'
 
 export type InputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -77,20 +81,20 @@ export type FileInputProps = ControlBaseProps & React.DetailedHTMLProps<React.In
 export type TextareaProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
 
 export type SelectProps = {
-  options?: Array<Choice | SingleLevelGroupChoices>
+  options?: Array<Choice<HTMLOptionElement> | SingleLevelGroupChoices<HTMLOptGroupElement>>
   allowEmpty?: boolean
 } & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
 export type CheckboxProps = {
-  options?: Choice[]
+  options?: Array<Choice<HTMLInputElement>>
   single?: boolean
-  orientation?: 'horizontal' | 'vertical'
-} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+  orientation?: Orientation
+} & ControlBaseProps
 
 export type RadioProps = {
-  options?: Choice[]
-  orientation?: 'horizontal' | 'vertical'
-} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+  options?: Array<Choice<HTMLInputElement>>
+  orientation?: Orientation
+} & ControlBaseProps
 
 export type DateProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
