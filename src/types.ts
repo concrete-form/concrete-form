@@ -100,9 +100,9 @@ export type DateProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHT
 
 export type TimeProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export type ToggleSwitchProps = ControlBaseProps
+export type ToggleSwitchProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export type SliderProps = ControlBaseProps
+export type SliderProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export type SubmitButtonProps = {
   displayLoading?: boolean

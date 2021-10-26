@@ -1,5 +1,6 @@
 import { useConcreteFormHandler } from '../context/concreteForm.context'
 import { ControlBaseProps } from '../types'
+import { mergeEventHandlers } from '../util/events'
 
 export const useFormState = () => useConcreteFormHandler().getFormState()
 export const useControlState = (name: string) => useConcreteFormHandler().getControlState(name)
@@ -19,6 +20,9 @@ export const useControlProps = (
     'aria-invalid': errors?.length > 0 ? 'true' : 'false',
     ...formHandlerProps,
     ...inputProps,
+    onChange: mergeEventHandlers((inputProps as any).onChange, formHandlerProps.onChange),
+    onBlur: mergeEventHandlers((inputProps as any).onBlur, formHandlerProps.onBlur),
+    onInput: mergeEventHandlers((inputProps as any).onInput, formHandlerProps.onInput),
     disabled,
   }
 }
