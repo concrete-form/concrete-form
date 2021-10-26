@@ -63,32 +63,41 @@ export type GroupChoices = {
   options: Array<Choice | GroupChoices>
 }
 
-type SelectOptions = {
-  options?: Array<Choice | GroupChoices>
-  allowEmpty?: boolean
-}
-
-type CheckboxOptions = {
-  options?: Choice[]
-  single?: boolean
-  orientation?: 'horizontal' | 'vertical'
-}
-
-type RadioOptions = {
-  options?: Choice[]
-  orientation?: 'horizontal' | 'vertical'
+export type SingleLevelGroupChoices = {
+  group: string
+  options: Choice[]
 }
 
 export type InputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
 export type AutocompleteProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
 export type FileInputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
 export type TextareaProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
-export type SelectProps = ControlBaseProps & SelectOptions & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
-export type CheckboxProps = ControlBaseProps & CheckboxOptions & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-export type RadioProps = ControlBaseProps & RadioOptions & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
+export type SelectProps = {
+  options?: Array<Choice | SingleLevelGroupChoices>
+  allowEmpty?: boolean
+} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+
+export type CheckboxProps = {
+  options?: Choice[]
+  single?: boolean
+  orientation?: 'horizontal' | 'vertical'
+} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
+export type RadioProps = {
+  options?: Choice[]
+  orientation?: 'horizontal' | 'vertical'
+} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
 export type DateProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
 export type TimeProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
 export type ToggleSwitchProps = ControlBaseProps
+
 export type SliderProps = ControlBaseProps
 
 export type SubmitButtonProps = {
