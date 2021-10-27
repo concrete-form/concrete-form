@@ -1,15 +1,18 @@
-export const mergeEventHandlers = (...handlers: any[]) => async (event: React.SyntheticEvent) => {
-  if (event.defaultPrevented) {
+export const mergeEventHandlers = (...handlers: any[]) => {
+  const validHandlers = handlers.filter(handler => typeof handler === 'function')
+  if (validHandlers.length === 0) {
     return
   }
-  event.persist()
-  for (const handler of handlers) {
-    if (typeof handler !== 'function') {
-      continue
-    }
-    await handler(event)
+  return async (event: React.SyntheticEvent) => {
     if (event.defaultPrevented) {
-      break
+      return
+    }
+    event.persist()
+    for (const handler of validHandlers) {
+      await handler(event)
+      if (event.defaultPrevented) {
+        return
+      }
     }
   }
 }
