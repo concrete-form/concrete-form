@@ -1,79 +1,74 @@
 import { Choice, GroupChoices, SingleLevelGroupChoices } from '../types'
 
-export enum ChoiceType {
-  Option,
-  Group,
-}
-
-export type FormattedOption<O> = {
-  type: ChoiceType.Option
-  label: string
+type FormattedOption<O, L> = {
+  type: 'option'
+  label: L
   value: string
   props?: React.DetailedHTMLProps<React.FormHTMLAttributes<O>, O>
 }
 
-export type FormattedGroup<O, G> = {
-  type: ChoiceType.Group
-  label: string
-  options: Array<FormattedOption<O> | FormattedGroup<O, G>>
+type FormattedGroup<O, G, L> = {
+  type: 'group'
+  label: L
+  options: Array<FormattedOption<O, L> | FormattedGroup<O, G, L>>
   props?: React.DetailedHTMLProps<React.FormHTMLAttributes<G>, G>
 }
 
-export type FormattedOptions<O, G> = Array< FormattedOption<O> | FormattedGroup<O, G> >
+type FormattedOptions<O, G, L> = Array< FormattedOption<O, L> | FormattedGroup<O, G, L> >
 
-export const parseSelectOptions = (options?: Array<Choice<HTMLOptionElement> | SingleLevelGroupChoices<HTMLOptGroupElement>>, children?: any) => {
+export const parseSelectOptions = (options?: Array<Choice<HTMLOptionElement, string|undefined> | SingleLevelGroupChoices<HTMLOptGroupElement, string|undefined>>, children?: any) => {
   if (options && children) {
     throw new Error('a "Select" component with "options" cannot have children')
   }
-  return parseGroups(options) as FormattedOptions<HTMLOptionElement, HTMLOptGroupElement>
+  return parseGroups(options) as FormattedOptions<HTMLOptionElement, HTMLOptGroupElement, string|undefined>
 }
 
-export const parseRadioOptions = (options?: Array<Choice<HTMLInputElement>>, children?: any) => {
+export const parseRadioOptions = (options?: Array<Choice<HTMLInputElement, React.ReactNode>>, children?: any) => {
   if (options && children) {
     throw new Error('a "Radio" component with "options" cannot have children')
   }
-  return parseOptions(options) as Array<FormattedOption<HTMLInputElement>>
+  return parseOptions(options) as Array<FormattedOption<HTMLInputElement, React.ReactNode>>
 }
 
-export const parseCheckboxOptions = (options?: Array<Choice<HTMLInputElement>>, children?: any) => {
+export const parseCheckboxOptions = (options?: Array<Choice<HTMLInputElement, React.ReactNode>>, children?: any) => {
   if (options && children) {
     throw new Error('a "Checkbox" component with "options" cannot have children')
   }
-  return parseOptions(options) as Array<FormattedOption<HTMLInputElement>>
+  return parseOptions(options) as Array<FormattedOption<HTMLInputElement, React.ReactNode>>
 }
 
-const parseGroups = (items?: Array<Choice<any> | GroupChoices<any, any>>): FormattedOptions<any, any> => {
+const parseGroups = (items?: Array<Choice<any, any> | GroupChoices<any, any, any>>): FormattedOptions<any, any, any> => {
   if (!items || items?.length === 0) {
     return []
   }
   return items.map(item => {
     if ((item as any)?.group) {
-      return parseGroup(item as GroupChoices<any, any>)
+      return parseGroup(item as GroupChoices<any, any, any>)
     }
-    return parseOption(item as Choice<any>)
+    return parseOption(item as Choice<any, any>)
   })
 }
 
-const parseGroup = (group: GroupChoices<any, any>): FormattedGroup<any, any> => {
+const parseGroup = (group: GroupChoices<any, any, any>): FormattedGroup<any, any, any> => {
   return {
-    type: ChoiceType.Group,
+    type: 'group',
     label: group.group,
     options: parseGroups(group.options),
     props: group.props,
   }
 }
 
-const parseOptions = (items?: Array<Choice<any>>): Array<FormattedOption<any>> => {
+const parseOptions = (items?: Array<Choice<any, any>>): Array<FormattedOption<any, any>> => {
   if (!items || items?.length === 0) {
     return []
   }
   return items.map(parseOption)
 }
 
-const parseOption = (option: Choice<any>): FormattedOption<any> => {
+const parseOption = (option: Choice<any, any>): FormattedOption<any, any> => {
   const labelOption = typeof option === 'string' ? { label: option, value: option } : option
   return {
-    type: ChoiceType.Option,
+    type: 'option',
     ...labelOption,
   }
 }
