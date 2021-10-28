@@ -16,3 +16,15 @@ export const mergeEventHandlers = (...handlers: any[]) => {
     }
   }
 }
+
+const eventHandlersPattern = /^on[A-Z]+/
+
+export const removeEventHandlers = (props: Record<string, any>) => {
+  const filteredEntries = Object.entries(props).filter(([key]) => !eventHandlersPattern.test(key))
+  return Object.fromEntries(filteredEntries)
+}
+
+export const extractEventHandlers = (props: Record<string, any>) => {
+  const filteredEntries = Object.entries(props).filter(([key]) => eventHandlersPattern.test(key))
+  return Object.fromEntries(filteredEntries)
+}
