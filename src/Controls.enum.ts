@@ -10,6 +10,7 @@ enum Controls {
   Time,
   ToggleSwitch,
   Slider,
+  CustomType,
   SubmitButton,
 }
 

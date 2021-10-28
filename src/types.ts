@@ -1,5 +1,3 @@
-import Controls from './Controls.enum'
-
 /* form */
 
 export type ConcreteFormContext = {
@@ -51,26 +49,35 @@ export type ControlBaseProps = {
   disabled?: boolean
 }
 
-export type LabelledChoice<C> = {
+export type CustomControlParameters = {
+  incomingDataFormatter?: (formValue: any) => any
+  outgoingDataFormatter?: (inputValue: any) => any
+  applyLocally?: boolean
+  formatInitialValue?: boolean
+  validateInitialValue?: boolean
+}
+
+export type LabelledChoice<C, L> = {
   value: string
-  label: string
+  label: L
   props?: React.DetailedHTMLProps<React.InputHTMLAttributes<C>, C>
 }
 
-export type Choice<C> = string | LabelledChoice<C>
+export type Choice<C, L> = string | LabelledChoice<C, L>
 
-export type GroupChoices<G, C> = {
+export type GroupChoices<G, C, L> = {
   group: string
-  options: Array<Choice<C> | GroupChoices<G, C>>
+  options: Array<Choice<C, L> | GroupChoices<G, C, L>>
   props?: React.DetailedHTMLProps<React.InputHTMLAttributes<G>, G>
 }
 
-export type SingleLevelGroupChoices<C> = {
+export type SingleLevelGroupChoices<C, L> = {
   group: string
-  options: Array<Choice<C>>
+  options: Array<Choice<C, L>>
 }
 
-type Orientation = 'horizontal' | 'vertical'
+export type Orientation = 'horizontal' | 'vertical'
+export type Position = 'top' | 'bottom' | 'left' | 'right'
 
 export type InputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -81,44 +88,38 @@ export type FileInputProps = ControlBaseProps & React.DetailedHTMLProps<React.In
 export type TextareaProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
 
 export type SelectProps = {
-  options?: Array<Choice<HTMLOptionElement> | SingleLevelGroupChoices<HTMLOptGroupElement>>
+  options?: Array<Choice<HTMLOptionElement, string|undefined> | SingleLevelGroupChoices<HTMLOptGroupElement, string|undefined>>
   allowEmpty?: boolean
 } & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
 export type CheckboxProps = {
-  options?: Array<Choice<HTMLInputElement>>
-  single?: boolean
+  options?: Array<Choice<HTMLInputElement, React.ReactNode>>
   orientation?: Orientation
+  labelPosition?: Position
 } & ControlBaseProps
 
 export type RadioProps = {
-  options?: Array<Choice<HTMLInputElement>>
+  options?: Array<Choice<HTMLInputElement, React.ReactNode>>
   orientation?: Orientation
+  labelPosition?: Position
 } & ControlBaseProps
 
 export type DateProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export type TimeProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export type ToggleSwitchProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type ToggleSwitchProps = {
+  applyInitialValue?: boolean
+  label?: React.ReactNode
+  labelPosition?: Position
+} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export type SliderProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
+export type CustomControlProps = {
+  render?: (props: any) => React.ReactElement<any, any>
+} & ControlBaseProps & CustomControlParameters & React.DetailedHTMLProps<React.InputHTMLAttributes<any>, any>
+
 export type SubmitButtonProps = {
   displayLoading?: boolean
-}
-
-export type ControlsComponents = {
-  [Controls.Input]: React.ReactNode
-  [Controls.Textarea]: React.ReactNode
-  [Controls.Autocomplete]: React.ReactNode
-  [Controls.FileInput]: React.ReactNode
-  [Controls.Checkbox]: React.ReactNode
-  [Controls.Radio]: React.ReactNode
-  [Controls.Select]: React.ReactNode
-  [Controls.Date]: React.ReactNode
-  [Controls.Time]: React.ReactNode
-  [Controls.ToggleSwitch]: React.ReactNode
-  [Controls.Slider]: React.ReactNode
-  [Controls.SubmitButton]: React.ReactNode
 }

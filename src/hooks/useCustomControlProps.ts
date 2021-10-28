@@ -1,38 +1,30 @@
 import { useEffect, useState, useRef } from 'react'
-import { ControlBaseProps } from '../types'
-import { useControlProps, useControlState, useControlActions } from '../hooks/concreteForm.hooks'
-import { mergeEventHandlers } from '../util/events'
+import { ControlBaseProps, CustomControlParameters } from '../types'
+import { mergeEventHandlers, removeEventHandlers, extractEventHandlers } from '../util/events'
+import useControlProps from './useControlProps'
+import useControlState from './useControlState'
+import useControlActions from './useControlActions'
 
-type CustomControlProps = {
-  name: string
-  render?: (props: any) => React.ReactElement<any, any> | null
-  incomingDataFormatter?: (formValue: any) => any
-  outgoingDataFormatter?: (inputValue: any) => any
-  applyLocally?: boolean
-  formatInitialValue?: boolean
-  validateInitialValue?: boolean
-} & ControlBaseProps & any
-
-const CustomControl: React.FC<CustomControlProps> = ({
-  name,
-  render,
-  incomingDataFormatter,
-  outgoingDataFormatter,
-  applyLocally = false,
-  formatInitialValue = false,
-  ...inputProps
-}) => {
+const useCustomControlProps = (
+  name: string,
+  {
+    incomingDataFormatter,
+    outgoingDataFormatter,
+    applyLocally = false,
+    formatInitialValue = false,
+  }: CustomControlParameters,
+  controlProps: Omit<ControlBaseProps, 'name'> & React.DetailedHTMLProps<React.InputHTMLAttributes<any>, any>,
+) => {
   if (formatInitialValue && !outgoingDataFormatter) {
-    console.warn('"formatInitialValue" has no effect when no outgoing formatter is defined')
+    console.warn('"formatInitialValue" has no effect when "outgoingDataFormatter" is undefined')
   }
-
+  const { fieldProps, ...inputProps } = controlProps
   const getInitialValue = (value: any) => (incomingDataFormatter ? incomingDataFormatter(value) : value) ?? ''
-
   const { value } = useControlState(name)
   const { setFieldValue } = useControlActions(name)
   const expectedValue = !formatInitialValue || !outgoingDataFormatter ? value : outgoingDataFormatter(value)
   const initialValue = useRef(getInitialValue(applyLocally ? expectedValue : value))
-  const props = useControlProps(name, inputProps)
+  const props = useControlProps(name, controlProps)
   const [inputValue, setInputValue] = useState<any>(initialValue.current)
 
   useEffect(() => {
@@ -53,7 +45,7 @@ const CustomControl: React.FC<CustomControlProps> = ({
         newValue = event.target.value
     }
     if (applyLocally) {
-      setInputValue(outgoingDataFormatter(newValue))
+      setInputValue(outgoingDataFormatter ? outgoingDataFormatter(newValue) : newValue)
     }
     setFieldValue(outgoingDataFormatter ? outgoingDataFormatter(newValue) : newValue, true, true)
   }
@@ -81,16 +73,13 @@ const CustomControl: React.FC<CustomControlProps> = ({
     return controlledProps
   }
 
-  const renderComponent = render ?? ((props: any) => <input {...props} />)
-
-  return renderComponent({
-    ...props,
+  return {
+    ...removeEventHandlers(props),
+    ...extractEventHandlers(inputProps),
     ...handleControlledProps(),
     ref: undefined,
     onChange: mergeEventHandlers(inputProps?.onChange, onInputValueChange),
-    onBlur: inputProps?.onBlur,
-    onInput: inputProps?.onInput,
-  })
+  }
 }
 
-export default CustomControl
+export default useCustomControlProps
