@@ -1,11 +1,10 @@
 import { useConcreteFormHandler } from '../context/concreteForm.context'
 import { ControlBaseProps } from '../types'
 import { mergeEventHandlers } from '../util/events'
+import useFormState from './useFormState'
+import useControlState from './useControlState'
 
-export const useFormState = () => useConcreteFormHandler().getFormState()
-export const useControlState = (name: string) => useConcreteFormHandler().getControlState(name)
-
-export const useControlProps = (
+const useControlProps = (
   name: string,
   controlProps: Omit<ControlBaseProps, 'name'>,
 ) => {
@@ -27,9 +26,4 @@ export const useControlProps = (
   }
 }
 
-export const useControlActions = (name: string) => {
-  const handler = useConcreteFormHandler()
-  return {
-    setFieldValue: (value: any, shouldValidate: boolean = true, shouldTouch: boolean = true) => handler.setFieldValue(name, value, shouldValidate, shouldTouch),
-  }
-}
+export default useControlProps
