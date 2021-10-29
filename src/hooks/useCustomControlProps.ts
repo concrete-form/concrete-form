@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+
 import { ControlBaseProps, CustomControlParameters } from '../types'
 import { mergeEventHandlers, removeEventHandlers, extractEventHandlers } from '../util/events'
 import useControlProps from './useControlProps'
