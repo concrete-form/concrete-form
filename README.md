@@ -1,9 +1,9 @@
 <p align="center">
-  <img alt="Concrete Form" src="./doc/logo.png" />
+  <img alt="Concrete Form" src="https://raw.githubusercontent.com/concrete-form/concrete-form/master/doc/logo.png" />
 </p>
 
 <p align="center">
-  A <strong>UI implementation</strong> of the most popular form libraries for <strong>React</strong>
+  The most popular <strong>React form libraries</strong> implemented for you
 </p>
 
 ---
@@ -41,28 +41,37 @@
 
 ```jsx
 import Form from '@concrete-form/react-hook-form'
-import { Input } from '@concrete-form/material-ui'
-import { useForm } from 'react-hook-form'
+import { Input, SubmitButton } from '@concrete-form/material-ui'
 
-const Example = () => {
-  const form = useForm()
-  return (
-    <Form form={form} onSubmit={...}>
-      <Input name="foo" />
-    </Form>
-  )
-}
+const App = () => (
+  <Form onSubmit={...}>
+    <Input name="name" placeholder="Enter your name" />
+    <SubmitButton>Send</SubmitButton>
+  </Form>
+)
 ```
 
 ## **Concrete Form** in a nutshell
-1) Select the form provider you're using (ex `React Hook Form`).
-2) Select the UI kit you're using (ex `Material-UI`).
-3) Start working your forms, `Concrete Form` connects all the libraries together
+1) Select the form provider you want (ex `React Hook Form`, `Formik`).
+2) Select the UI kit you want (ex `Material-UI`, `Materialize`).
+3) Enjoy. `Concrete Form` connects the form and the UI for you.
 
-## What this library is NOT
-1) **Concrete Form** is **NOT** a form library, just an implementation of existing libraries
-2) **Concrete Form** is **NOT** changing the form behavior
-3) **Concrete Form** is **NOT** making any design decision for you when rendering the controls
+## FAQ
+> What new form feature do I get ?
+
+**None.** Concrete form only take care of the rendering of the ui. Refer to your form prodiver doc.
+
+<br />
+
+> Can I implement custom form control ?
+
+**Absolutely**. The same way you would normally. (your existing custom controls will work without change too)
+
+<br />
+
+> Can I customize the UI ?
+
+**YES**. The rendering is higly customizable and follow the UI kits best practices.
 
 <br />
 
