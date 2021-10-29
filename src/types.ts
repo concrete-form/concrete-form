@@ -8,11 +8,11 @@ export type ConcreteFormContext = {
 export type ConcreteFormConfig = {
   language?: string
   layout?: {
-    control?: React.ElementType
+    control?: React.ElementType<{ errors: React.ReactNode }>
     errors?: React.ElementType<{ errors: string[] }>
     itemLabel?: React.ElementType<{ label?: React.ReactNode, labelPosition: Position }>
     itemsGroup?: React.ElementType<{ orientation: Orientation }>
-    labelledControl?: React.ElementType
+    labelledControl?: React.ElementType<{ label?: React.ReactNode, labelPosition: Position }>
     label?: React.ElementType
   }
 }
@@ -111,6 +111,12 @@ export type DateTimeProps = {
 } & ControlBaseProps & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'>
 
 export type ToggleSwitchProps = {
+  applyInitialValue?: boolean
+  label?: React.ReactNode
+  labelPosition?: Position
+} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
+export type SingleCheckboxProps = {
   applyInitialValue?: boolean
   label?: React.ReactNode
   labelPosition?: Position

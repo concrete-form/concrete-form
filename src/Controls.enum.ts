@@ -8,6 +8,7 @@ enum Controls {
   Radio,
   DateTime,
   ToggleSwitch,
+  SingleCheckbox,
   Slider,
   CustomType,
   SubmitButton,
