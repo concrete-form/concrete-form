@@ -7,7 +7,7 @@ const ConcreteFormContext = createContext<ConcreteFormContextType|null>(null)
 const useConcreteFormContext = (): ConcreteFormContextType => {
   const context = useContext(ConcreteFormContext)
   if (!context) {
-    throw new Error('You cannot use "useConcreteFormContext" outside of form context')
+    throw new Error('Missing form context. Did you forget to use <Form /> ?')
   }
   return context
 }
