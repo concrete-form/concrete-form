@@ -106,9 +106,9 @@ export type RadioProps = {
   labelPosition?: Position
 } & ControlBaseProps
 
-export type DateProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-
-export type TimeProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type DateTimeProps = {
+  type?: 'date' | 'time' | 'datetime'
+} & ControlBaseProps & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'>
 
 export type ToggleSwitchProps = {
   applyInitialValue?: boolean
