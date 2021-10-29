@@ -9,7 +9,9 @@ export type ConcreteFormConfig = {
   language?: string
   layout?: {
     control?: React.ElementType
-    errors?: React.ElementType<{errors: string[]}>
+    errors?: React.ElementType<{ errors: string[] }>
+    itemLabel?: React.ElementType<{ label?: React.ReactNode, labelPosition: Position }>
+    itemsGroup?: React.ElementType<{ orientation: Orientation }>
     labelledControl?: React.ElementType
     label?: React.ElementType
   }
