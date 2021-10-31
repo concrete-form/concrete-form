@@ -1,4 +1,4 @@
-import Layour from './Layout.enum'
+import Layout from './Layout.enum'
 
 /* form */
 
@@ -9,12 +9,12 @@ export type ConcreteFormContext = {
 
 export type ConcreteFormConfig = {
   layout?: {
-    [Layour.Control]?: React.ElementType<ControlLayoutType>
-    [Layour.Errors]?: React.ElementType<ErrorsLayoutType>
-    [Layour.ItemLabel]?: React.ElementType<ItemLabelLayoutType>
-    [Layour.ItemsGroup]?: React.ElementType<ItemsGroupLayoutType>
-    [Layour.Label]?: React.ElementType<LabelLayoutType>
-    [Layour.LabelledControl]?: React.ElementType<LabelledControlLayoutType>
+    [Layout.Control]?: React.ElementType<ControlLayoutProps>
+    [Layout.Errors]?: React.ElementType<ErrorsLayoutProps>
+    [Layout.ItemLabel]?: React.ElementType<ItemLabelLayoutProps>
+    [Layout.ItemsGroup]?: React.ElementType<ItemsGroupLayoutProps>
+    [Layout.Label]?: React.ElementType<LabelLayoutProps>
+    [Layout.LabelledControl]?: React.ElementType<LabelledControlLayoutProps>
   }
 }
 
@@ -39,38 +39,38 @@ export type ConcreteFormProps = {
 
 /* layout */
 
-export type ControlLayoutType = {
+export type ControlLayoutProps = {
   name: string
   control: React.ReactNode
   errors: React.ReactNode
 }
 
-export type ErrorsLayoutType = {
+export type ErrorsLayoutProps = {
   name: string
   errors: string[]
 }
 
-export type ItemLabelLayoutType = {
+export type ItemLabelLayoutProps = {
   name: string
   control: React.ReactNode
   label: React.ReactNode
   labelPosition?: Position
 }
 
-export type ItemsGroupLayoutType = {
+export type ItemsGroupLayoutProps = {
   name: string
   items: React.ReactNode
   orientation?: Orientation
 }
 
-export type LabelLayoutType = {
+export type LabelLayoutProps = {
   name: string
   label: React.ReactNode
 }
 
-export type LabelledControlLayoutType = {
-  label: string
-  control: React.ReactNode
+export type LabelledControlLayoutProps = {
+  children: React.ReactNode
+  label: React.ReactNode
   labelPosition?: Position
 }
 
