@@ -72,7 +72,6 @@ export type LabelledControlLayoutProps = {
   control: React.ReactNode
   label: React.ReactNode
   labelPosition?: Position
-  focusable: boolean
 }
 
 /* controls */
