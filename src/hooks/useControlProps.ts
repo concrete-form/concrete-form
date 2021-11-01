@@ -1,4 +1,4 @@
-import { useConcreteFormHandler } from '../context/concreteForm.context'
+import { useConcreteFormHandler, useConcreteFormId } from '../context/concreteForm.context'
 import { ControlBaseProps } from '../types'
 import { mergeEventHandlers } from '../util/events'
 import useFormState from './useFormState'
@@ -8,13 +8,17 @@ const useControlProps = (
   name: string,
   controlProps: Omit<ControlBaseProps, 'name'>,
 ) => {
+  const formId = useConcreteFormId()
   const { isSubmitting } = useFormState()
   const { errors } = useControlState(name)
   const { fieldProps, ...inputProps } = controlProps
   const formHandlerProps = useConcreteFormHandler().getControlProps(name, fieldProps)
   const disabled = formHandlerProps.disabled || inputProps.disabled || isSubmitting
 
+  const id = ['checkbox', 'radio'].includes(inputProps?.type ?? '') ? undefined : `${formId}-${name}`
+
   return {
+    id,
     'aria-required': inputProps?.required ? 'true' : 'false',
     'aria-invalid': errors?.length > 0 ? 'true' : 'false',
     ...formHandlerProps,

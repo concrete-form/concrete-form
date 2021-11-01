@@ -1,5 +1,6 @@
 export { default as useFormState } from './useFormState'
 export { default as useControlState } from './useControlState'
 export { default as useControlProps } from './useControlProps'
+export { default as useControlLabelFor } from './useControlLabelFor'
 export { default as useControlActions } from './useControlActions'
 export { default as useCustomControlProps } from './useCustomControlProps'

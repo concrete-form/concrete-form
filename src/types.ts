@@ -66,6 +66,7 @@ export type ItemsGroupLayoutProps = {
 
 export type LabelLayoutProps = {
   label: React.ReactNode
+  htmlFor?: string
 }
 
 export type LabelledControlLayoutProps = {
@@ -85,6 +86,7 @@ export type ControlState = {
 export type ControlBaseProps = {
   name: string
   fieldProps?: any
+  type?: string
   required?: boolean
   disabled?: boolean
 }
