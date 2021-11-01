@@ -10,12 +10,13 @@ const useControlLabelFor = (control: any) => {
   }
 
   if (![
-    'Input',
     'Autocomplete',
-    'FileInput',
-    'Select',
+    'CustomControl',
     'DateTime',
+    'Input',
+    'Select',
     'Slider',
+    'Textare',
   ].includes(controlType)) {
     return
   }
