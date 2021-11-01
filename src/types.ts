@@ -5,6 +5,7 @@ import Layout from './Layout.enum'
 export type ConcreteFormContext = {
   config: ConcreteFormConfig
   formHandler: FormHandler
+  id: string
 }
 
 export type ConcreteFormConfig = {
@@ -64,14 +65,14 @@ export type ItemsGroupLayoutProps = {
 }
 
 export type LabelLayoutProps = {
-  name: string
   label: React.ReactNode
 }
 
 export type LabelledControlLayoutProps = {
-  children: React.ReactNode
+  control: React.ReactNode
   label: React.ReactNode
   labelPosition?: Position
+  focusable: boolean
 }
 
 /* controls */

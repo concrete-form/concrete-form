@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { ConcreteFormContext as ConcreteFormContextType } from '../types'
 
@@ -14,13 +15,14 @@ const useConcreteFormContext = (): ConcreteFormContextType => {
 
 export const useConcreteFormHandler = () => useConcreteFormContext().formHandler
 export const useConcreteFormConfig = () => useConcreteFormContext().config
+export const useConcreteFormId = () => useConcreteFormContext().id
 
-export const ConcreteFormProvider: React.FC<ConcreteFormContextType> = ({
+export const ConcreteFormProvider: React.FC<Omit<ConcreteFormContextType, 'id'>> = ({
   formHandler,
   children,
   ...config
 }) => (
-  <ConcreteFormContext.Provider value={{ formHandler, ...config }}>
+  <ConcreteFormContext.Provider value={{ formHandler, ...config, id: uuidv4() }}>
     { children }
   </ConcreteFormContext.Provider>
 )
