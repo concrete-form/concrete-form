@@ -182,9 +182,9 @@ export type SubmitButtonProps = {
 type ControlPropsToMerge = {
   disabled?: boolean
   required?: boolean
-  onChange?: () => any
-  onBlur?: () => any
-  onInput?: () => any
+  onChange?: any
+  onBlur?: any
+  onInput?: any
 }
 
-export type ControlProps = (InputProps | AutocompleteProps | FileInputProps | TextareaProps | SelectProps | CheckboxProps | RadioProps | DateTimeProps | ToggleSwitchProps | SingleCheckboxProps | SliderProps | CustomControlProps) & ControlPropsToMerge
+export type ControlProps = ControlPropsToMerge & (InputProps | AutocompleteProps | FileInputProps | TextareaProps | SelectProps | CheckboxProps | RadioProps | DateTimeProps | ToggleSwitchProps | SingleCheckboxProps | SliderProps | CustomControlProps)
