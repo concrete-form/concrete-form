@@ -177,6 +177,8 @@ export type CustomControlProps = {
 
 export type SubmitButtonProps = {
   displayLoading?: boolean
+  loadingComponent?: React.ReactNode
+  alternateLoadingContent?: React.ReactNode
 }
 
 type ControlPropsToMerge = {

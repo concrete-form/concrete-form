@@ -30,17 +30,11 @@ export const parseSelectOptions = (options?: Array<Choice<ReactOptionsProps, str
   return parseGroups(options) as FormattedOptions<ReactOptGroupProps, ReactOptionsProps, string|undefined>
 }
 
-export const parseRadioOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>, children?: any) => {
-  if (options && children) {
-    throw new Error('a "Radio" component with "options" cannot have children')
-  }
+export const parseRadioOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>) => {
   return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
 }
 
-export const parseCheckboxOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>, children?: any) => {
-  if (options && children) {
-    throw new Error('a "Checkbox" component with "options" cannot have children')
-  }
+export const parseCheckboxOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>) => {
   return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
 }
 
