@@ -7,6 +7,7 @@ import useControlState from './useControlState'
 const useControlProps = (
   name: string,
   controlProps: Omit<ControlProps, 'name'>,
+  group = false,
 ) => {
   const formId = useConcreteFormId()
   const { isSubmitting } = useFormState()
@@ -15,7 +16,7 @@ const useControlProps = (
   const formHandlerProps = useConcreteFormHandler().getControlProps(name, fieldProps)
   const disabled = formHandlerProps.disabled || inputProps?.disabled || isSubmitting
 
-  const id = ['checkbox', 'radio'].includes(inputProps?.type ?? '') ? undefined : `${formId}-${name}`
+  const id = group ? undefined : `${formId}-${name}`
 
   return {
     id,

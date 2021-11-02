@@ -179,4 +179,12 @@ export type SubmitButtonProps = {
   displayLoading?: boolean
 }
 
-export type ControlProps = InputProps & AutocompleteProps & FileInputProps & TextareaProps & SelectProps & CheckboxProps & RadioProps & DateTimeProps & ToggleSwitchProps & SingleCheckboxProps & SliderProps & CustomControlProps
+type ControlPropsToMerge = {
+  disabled?: boolean
+  required?: boolean
+  onChange?: () => any
+  onBlur?: () => any
+  onInput?: () => any
+}
+
+export type ControlProps = (InputProps | AutocompleteProps | FileInputProps | TextareaProps | SelectProps | CheckboxProps | RadioProps | DateTimeProps | ToggleSwitchProps | SingleCheckboxProps | SliderProps | CustomControlProps) & ControlPropsToMerge
