@@ -27,7 +27,7 @@ export const parseSelectOptions = (options?: Array<Choice<ReactOptionsProps, str
   if (options && children) {
     throw new Error('a "Select" component with "options" cannot have children')
   }
-  return parseGroups(options) as FormattedOptions<HTMLOptGroupElement, HTMLOptionElement, string|undefined>
+  return parseGroups(options) as FormattedOptions<ReactOptGroupProps, ReactOptionsProps, string|undefined>
 }
 
 export const parseRadioOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>, children?: any) => {
