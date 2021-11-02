@@ -34,7 +34,7 @@ export type FormState = {
 }
 
 export type ConcreteFormProps = {
-  formProps?: React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
+  formProps?: ReactFormProps
   noValidate?: boolean
 } & ConcreteFormConfig
 
@@ -75,6 +75,15 @@ export type LabelledControlLayoutProps = {
   labelPosition?: Position
 }
 
+/* react detailed props */
+
+export type ReactFormProps = React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
+export type ReactInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type ReactTextareaProps = React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
+export type ReactSelectProps = React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+export type ReactOptionsProps = React.DetailedHTMLProps<React.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>
+export type ReactOptGroupProps = React.DetailedHTMLProps<React.OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>
+
 /* controls */
 
 export type ControlState = {
@@ -86,9 +95,6 @@ export type ControlState = {
 export type ControlBaseProps = {
   name: string
   fieldProps?: any
-  type?: string
-  required?: boolean
-  disabled?: boolean
 }
 
 export type CustomControlParameters = {
@@ -102,7 +108,7 @@ export type CustomControlParameters = {
 export type LabelledChoice<C, L> = {
   value: string
   label: L
-  props?: React.DetailedHTMLProps<React.InputHTMLAttributes<C>, C>
+  props?: C
 }
 
 export type Choice<C, L> = string | LabelledChoice<C, L>
@@ -110,59 +116,60 @@ export type Choice<C, L> = string | LabelledChoice<C, L>
 export type GroupChoices<G, C, L> = {
   group: string
   options: Array<Choice<C, L> | GroupChoices<G, C, L>>
-  props?: React.DetailedHTMLProps<React.InputHTMLAttributes<G>, G>
+  props?: G
 }
 
-export type SingleLevelGroupChoices<C, L> = {
+export type SingleLevelGroupChoices<G, C, L> = {
   group: string
   options: Array<Choice<C, L>>
+  props?: G
 }
 
 export type Orientation = 'horizontal' | 'vertical'
 export type Position = 'top' | 'bottom' | 'left' | 'right'
 
-export type InputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type InputProps = ControlBaseProps & ReactInputProps
 
-export type AutocompleteProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type AutocompleteProps = ControlBaseProps & ReactInputProps
 
-export type FileInputProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type FileInputProps = ControlBaseProps & ReactInputProps
 
-export type TextareaProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
+export type TextareaProps = ControlBaseProps & ReactTextareaProps
 
 export type SelectProps = {
-  options?: Array<Choice<HTMLOptionElement, string|undefined> | SingleLevelGroupChoices<HTMLOptGroupElement, string|undefined>>
+  options?: Array<Choice<ReactOptionsProps, string|undefined> | SingleLevelGroupChoices<ReactOptGroupProps, ReactOptionsProps, string|undefined>>
   allowEmpty?: boolean
-} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+} & ControlBaseProps & ReactSelectProps
 
 export type CheckboxProps = {
-  options?: Array<Choice<HTMLInputElement, React.ReactNode>>
+  options?: Array<Choice<ReactInputProps, React.ReactNode>>
   orientation?: Orientation
   labelPosition?: Position
 } & ControlBaseProps
 
 export type RadioProps = {
-  options?: Array<Choice<HTMLInputElement, React.ReactNode>>
+  options?: Array<Choice<ReactInputProps, React.ReactNode>>
   orientation?: Orientation
   labelPosition?: Position
 } & ControlBaseProps
 
 export type DateTimeProps = {
   type?: 'date' | 'time' | 'datetime'
-} & ControlBaseProps & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'>
+} & ControlBaseProps & Omit<ReactInputProps, 'type'>
 
 export type ToggleSwitchProps = {
   applyInitialValue?: boolean
   label?: React.ReactNode
   labelPosition?: Position
-} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+} & ControlBaseProps & ReactInputProps
 
 export type SingleCheckboxProps = {
   applyInitialValue?: boolean
   label?: React.ReactNode
   labelPosition?: Position
-} & ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+} & ControlBaseProps & ReactInputProps
 
-export type SliderProps = ControlBaseProps & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+export type SliderProps = ControlBaseProps & ReactInputProps
 
 export type CustomControlProps = {
   render?: (props: any) => React.ReactElement<any, any>
@@ -171,3 +178,5 @@ export type CustomControlProps = {
 export type SubmitButtonProps = {
   displayLoading?: boolean
 }
+
+export type ControlProps = InputProps & AutocompleteProps & FileInputProps & TextareaProps & SelectProps & CheckboxProps & RadioProps & DateTimeProps & ToggleSwitchProps & SingleCheckboxProps & SliderProps & CustomControlProps

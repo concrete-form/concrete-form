@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
-import { ControlBaseProps, CustomControlParameters } from '../types'
+import { ControlProps, CustomControlParameters } from '../types'
 import { mergeEventHandlers, removeEventHandlers, extractEventHandlers } from '../util/events'
 import useControlProps from './useControlProps'
 import useControlState from './useControlState'
@@ -14,7 +14,7 @@ const useCustomControlProps = (
     applyLocally = false,
     formatInitialValue = false,
   }: CustomControlParameters,
-  controlProps: Omit<ControlBaseProps, 'name'> & React.DetailedHTMLProps<React.InputHTMLAttributes<any>, any>,
+  controlProps: Omit<ControlProps, 'name'> & React.DetailedHTMLProps<React.InputHTMLAttributes<any>, any>,
 ) => {
   if (formatInitialValue && !outgoingDataFormatter) {
     console.warn('"formatInitialValue" has no effect when "outgoingDataFormatter" is undefined')

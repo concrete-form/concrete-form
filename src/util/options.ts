@@ -1,40 +1,47 @@
-import { Choice, GroupChoices, SingleLevelGroupChoices } from '../types'
+import {
+  Choice,
+  GroupChoices,
+  SingleLevelGroupChoices,
+  ReactInputProps,
+  ReactOptionsProps,
+  ReactOptGroupProps,
+} from '../types'
 
 type FormattedOption<O, L> = {
   type: 'option'
   label: L
   value: string
-  props?: React.DetailedHTMLProps<React.FormHTMLAttributes<O>, O>
+  props?: O
 }
 
-type FormattedGroup<O, G, L> = {
+type FormattedGroup<G, O, L> = {
   type: 'group'
   label: L
-  options: Array<FormattedOption<O, L> | FormattedGroup<O, G, L>>
-  props?: React.DetailedHTMLProps<React.FormHTMLAttributes<G>, G>
+  options: Array<FormattedOption<O, L> | FormattedGroup<G, O, L>>
+  props?: G
 }
 
-type FormattedOptions<O, G, L> = Array< FormattedOption<O, L> | FormattedGroup<O, G, L> >
+type FormattedOptions<G, O, L> = Array< FormattedOption<O, L> | FormattedGroup<G, O, L> >
 
-export const parseSelectOptions = (options?: Array<Choice<HTMLOptionElement, string|undefined> | SingleLevelGroupChoices<HTMLOptGroupElement, string|undefined>>, children?: any) => {
+export const parseSelectOptions = (options?: Array<Choice<ReactOptionsProps, string|undefined> | SingleLevelGroupChoices<ReactOptGroupProps, ReactOptionsProps, string|undefined>>, children?: any) => {
   if (options && children) {
     throw new Error('a "Select" component with "options" cannot have children')
   }
-  return parseGroups(options) as FormattedOptions<HTMLOptionElement, HTMLOptGroupElement, string|undefined>
+  return parseGroups(options) as FormattedOptions<HTMLOptGroupElement, HTMLOptionElement, string|undefined>
 }
 
-export const parseRadioOptions = (options?: Array<Choice<HTMLInputElement, React.ReactNode>>, children?: any) => {
+export const parseRadioOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>, children?: any) => {
   if (options && children) {
     throw new Error('a "Radio" component with "options" cannot have children')
   }
-  return parseOptions(options) as Array<FormattedOption<HTMLInputElement, React.ReactNode>>
+  return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
 }
 
-export const parseCheckboxOptions = (options?: Array<Choice<HTMLInputElement, React.ReactNode>>, children?: any) => {
+export const parseCheckboxOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>, children?: any) => {
   if (options && children) {
     throw new Error('a "Checkbox" component with "options" cannot have children')
   }
-  return parseOptions(options) as Array<FormattedOption<HTMLInputElement, React.ReactNode>>
+  return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
 }
 
 const parseGroups = (items?: Array<Choice<any, any> | GroupChoices<any, any, any>>): FormattedOptions<any, any, any> => {
