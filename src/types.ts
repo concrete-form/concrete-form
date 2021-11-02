@@ -75,6 +75,10 @@ export type LabelledControlLayoutProps = {
   labelPosition?: Position
 }
 
+/* exposed labelled control */
+
+export type LabelledcontrolProps = Omit<LabelledControlLayoutProps, 'control'>
+
 /* react detailed props */
 
 export type ReactFormProps = React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
@@ -169,7 +173,10 @@ export type SingleCheckboxProps = {
   labelPosition?: Position
 } & ControlBaseProps & ReactInputProps
 
-export type SliderProps = ControlBaseProps & ReactInputProps
+export type SliderProps = {
+  label?: React.ReactNode
+  labelPosition?: Position
+} & ControlBaseProps & ReactInputProps
 
 export type CustomControlProps = {
   render?: (props: any) => React.ReactElement<any, any>
