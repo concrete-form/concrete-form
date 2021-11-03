@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/core",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "author": "Kevin Gilbert",
   "description": "The most popular React form libraries implemented for you",
   "keywords": [
@@ -20,9 +20,14 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "postinstall": "yarn build && cd demo && yarn install",
+    "build": "yarn build:clean && yarn build:transpile && yarn build:types && yarn build:prepare",
     "build:clean": "rimraf dist",
-    "build:transpile": "tsc --project tsconfig.build.json",
-    "build": "yarn build:clean && yarn build:transpile && node scripts/prepareDist.js",
+    "build:transpile": "concurrently \"yarn build:esm && yarn build:umd\" \"yarn build:cjs\"",
+    "build:esm": "cross-env BABEL_ENV=esm babel --extensions \".js,.ts,.tsx\" src --out-dir dist --copy-files --no-copy-ignored",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel --extensions \".js,.ts,.tsx\" src --out-dir dist/cjs",
+    "build:umd": "cross-env BABEL_ENV=umd babel --extensions \".js\" dist/ --ignore dist/cjs --out-dir dist/umd --plugins=transform-es2015-modules-umd",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build:prepare": "node scripts/prepareDist.js",
     "start": "yarn build && concurrently --kill-others \"yarn build:transpile --watch\" \"cd demo && yarn start\"",
     "predeploy": "cd demo && yarn build",
     "deploy": "gh-pages -d demo/build",
@@ -41,6 +46,9 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/plugin-proposal-export-default-from": "^7.16.0",
+    "@babel/plugin-transform-typescript": "^7.16.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -49,8 +57,11 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/uuid": "^8.3.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-typescript-to-proptypes": "^2.0.0",
     "concurrently": "^6.3.0",
     "coveralls": "^3.1.1",
+    "cross-env": "^7.0.3",
     "eslint-plugin-standard-cra": "^1.0.7",
     "gh-pages": "^3.2.3",
     "react": "^17.0.2",
