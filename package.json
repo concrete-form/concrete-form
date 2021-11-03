@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/core",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "author": "Kevin Gilbert",
   "description": "The most popular React form libraries implemented for you",
   "keywords": [
@@ -16,8 +16,9 @@
   "bugs": "https://github.com/concrete-form/concrete-form/issues",
   "private": false,
   "license": "MIT",
+  "main": "./dist/cjs/index.js",
   "module": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "postinstall": "yarn build && cd demo && yarn install",
     "build": "yarn build:clean && yarn build:transpile && yarn build:types && yarn build:prepare",
