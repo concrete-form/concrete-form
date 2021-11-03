@@ -10,7 +10,6 @@
     "src/*"
   ],
   "exclude": [
-    "src/storybook",
     "src/setupTests.ts",
     "**/*.d.ts",
     "**/__tests__",
