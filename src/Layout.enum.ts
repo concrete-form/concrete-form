@@ -7,4 +7,8 @@ enum Layout {
   LabelledControl = 'labelledControl',
 }
 
+export enum AvailableLayout {
+  LabelledControl,
+}
+
 export default Layout

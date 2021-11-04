@@ -1,17 +1,17 @@
 enum Controls {
-  Input,
   Autocomplete,
-  FileInput,
-  Textarea,
-  Select,
   Checkbox,
-  Radio,
+  CustomControl,
   DateTime,
-  ToggleSwitch,
+  FileInput,
+  Input,
+  Radio,
+  Select,
   SingleCheckbox,
   Slider,
-  CustomType,
   SubmitButton,
+  Textarea,
+  ToggleSwitch,
 }
 
 export default Controls
