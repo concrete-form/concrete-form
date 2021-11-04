@@ -27,9 +27,7 @@ export type FormHandler = {
 }
 
 export type FormState = {
-  isValid: boolean
   isSubmitting: boolean
-  isSubmitted: boolean
   hasErrors: boolean
 }
 
@@ -93,7 +91,6 @@ export type ReactOptGroupProps = React.DetailedHTMLProps<React.OptgroupHTMLAttri
 export type ControlState = {
   value: any
   errors: string[]
-  isTouched: boolean
 }
 
 export type ControlBaseProps = {
