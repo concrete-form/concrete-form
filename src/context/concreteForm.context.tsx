@@ -19,14 +19,14 @@ export const useConcreteFormId = () => useConcreteFormContext().id
 
 export const ConcreteFormProvider: React.FC<Omit<ConcreteFormContextType, 'id'>> = ({
   formHandler,
+  config,
   children,
-  ...config
 }) => {
   const id = useRef(uuidv4())
   const value = useMemo(() => ({
     id: id.current,
     formHandler,
-    ...config,
+    config,
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }), [config])
   return (
