@@ -103,7 +103,6 @@ export type CustomControlParameters = {
   outgoingDataFormatter?: (inputValue: any) => any
   applyLocally?: boolean
   formatInitialValue?: boolean
-  validateInitialValue?: boolean
 }
 
 export type LabelledChoice<C, L> = {
@@ -115,13 +114,13 @@ export type LabelledChoice<C, L> = {
 export type Choice<C, L> = string | LabelledChoice<C, L>
 
 export type GroupChoices<G, C, L> = {
-  group: string
+  group: L
   options: Array<Choice<C, L> | GroupChoices<G, C, L>>
   props?: G
 }
 
 export type SingleLevelGroupChoices<G, C, L> = {
-  group: string
+  group: L
   options: Array<Choice<C, L>>
   props?: G
 }
