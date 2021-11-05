@@ -146,13 +146,13 @@ export type CheckboxProps = {
   options?: Array<Choice<ReactInputProps, React.ReactNode>>
   orientation?: Orientation
   labelPosition?: Position
-} & ControlBaseProps
+} & ControlBaseProps & ReactInputProps
 
 export type RadioProps = {
   options?: Array<Choice<ReactInputProps, React.ReactNode>>
   orientation?: Orientation
   labelPosition?: Position
-} & ControlBaseProps
+} & ControlBaseProps & ReactInputProps
 
 export type DateTimeProps = {
   type?: 'date' | 'time' | 'datetime'
