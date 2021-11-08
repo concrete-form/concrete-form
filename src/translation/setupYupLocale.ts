@@ -4,44 +4,45 @@ import TranslationKeys from './TranslationKeys.enum'
 type YupParams = Record<string, any>
 
 const setupYupLocale = () => {
+  const meta = { from: 'yup' }
   const yupLocale = {
     mixed: {
-      default: () => ({ key: TranslationKeys.DEFAULT }),
-      required: ({ key: TranslationKeys.REQUIRED }),
-      oneOf: ({ values }: YupParams) => ({ key: TranslationKeys.ONE_OF, values: { values } }),
-      notOneOf: ({ values }: YupParams) => ({ key: TranslationKeys.NOT_ONE_OF, values: { values } }),
-      notType: ({ key: TranslationKeys.DEFAULT }),
+      default: () => ({ key: TranslationKeys.DEFAULT, meta }),
+      required: ({ key: TranslationKeys.REQUIRED, meta }),
+      oneOf: ({ values }: YupParams) => ({ key: TranslationKeys.ONE_OF, values: { values }, meta }),
+      notOneOf: ({ values }: YupParams) => ({ key: TranslationKeys.NOT_ONE_OF, values: { values }, meta }),
+      notType: ({ key: TranslationKeys.DEFAULT, meta }),
     },
     string: {
-      length: ({ length }: YupParams) => ({ key: TranslationKeys.STRING_LENGTH, values: { length } }),
-      min: ({ min }: YupParams) => ({ key: TranslationKeys.STRING_MIN, values: { min } }),
-      max: ({ max }: YupParams) => ({ key: TranslationKeys.STRING_MAX, values: { max } }),
-      matches: ({ regex }: YupParams) => ({ key: TranslationKeys.DEFAULT, values: { regex } }),
-      email: ({ regex }: YupParams) => ({ key: TranslationKeys.STRING_EMAIL, values: { regex } }),
-      url: ({ regex }: YupParams) => ({ key: TranslationKeys.STRING_URL, values: { regex } }),
-      trim: ({ key: TranslationKeys.DEFAULT }),
-      lowercase: ({ key: TranslationKeys.STRING_LOWERCASE }),
-      uppercase: ({ key: TranslationKeys.STRING_UPPERCASE }),
+      length: ({ length }: YupParams) => ({ key: TranslationKeys.LENGTH, values: { length }, meta }),
+      min: ({ min }: YupParams) => ({ key: TranslationKeys.MINLENGTH, values: { min }, meta }),
+      max: ({ max }: YupParams) => ({ key: TranslationKeys.MAXLENGTH, values: { max }, meta }),
+      matches: ({ regex }: YupParams) => ({ key: TranslationKeys.DEFAULT, values: { regex }, meta }),
+      email: ({ regex }: YupParams) => ({ key: TranslationKeys.EMAIL, values: { regex }, meta }),
+      url: ({ regex }: YupParams) => ({ key: TranslationKeys.URL, values: { regex }, meta }),
+      trim: ({ key: TranslationKeys.DEFAULT, meta }),
+      lowercase: ({ key: TranslationKeys.LOWERCASE, meta }),
+      uppercase: ({ key: TranslationKeys.UPPERCASE, meta }),
     },
     number: {
-      min: ({ min }: YupParams) => ({ key: TranslationKeys.NUMBER_MIN, values: { min } }),
-      max: ({ max }: YupParams) => ({ key: TranslationKeys.NUMBER_MAX, values: { max } }),
-      lessThan: ({ less }: YupParams) => ({ key: TranslationKeys.NUMBER_LESS_THAN, values: { less } }),
-      moreThan: ({ more }: YupParams) => ({ key: TranslationKeys.NUMBER_MORE_THAN, values: { more } }),
-      positive: ({ more }: YupParams) => ({ key: TranslationKeys.NUMBER_POSITIVE, values: { more } }),
-      negative: ({ less }: YupParams) => ({ key: TranslationKeys.NUMBER_NEGATIVE, values: { less } }),
-      integer: ({ key: TranslationKeys.NUMBER_INTEGER }),
+      min: ({ min }: YupParams) => ({ key: TranslationKeys.MIN, values: { min }, meta }),
+      max: ({ max }: YupParams) => ({ key: TranslationKeys.MAX, values: { max }, meta }),
+      lessThan: ({ less }: YupParams) => ({ key: TranslationKeys.LESS_THAN, values: { less }, meta }),
+      moreThan: ({ more }: YupParams) => ({ key: TranslationKeys.MORE_THAN, values: { more }, meta }),
+      positive: ({ more }: YupParams) => ({ key: TranslationKeys.POSITIVE, values: { more }, meta }),
+      negative: ({ less }: YupParams) => ({ key: TranslationKeys.NEGATIVE, values: { less }, meta }),
+      integer: ({ key: TranslationKeys.INTEGER, meta }),
     },
     date: {
-      min: ({ min }: YupParams) => ({ key: TranslationKeys.DATE_MIN, values: { min } }),
-      max: ({ max }: YupParams) => ({ key: TranslationKeys.DATE_MAX, values: { max } }),
+      min: ({ min }: YupParams) => ({ key: TranslationKeys.MIN_DATE, values: { min }, meta }),
+      max: ({ max }: YupParams) => ({ key: TranslationKeys.MAX_DATE, values: { max }, meta }),
     },
     object: {
-      noUnknown: ({ key: TranslationKeys.DEFAULT }),
+      noUnknown: ({ key: TranslationKeys.DEFAULT, meta }),
     },
     array: {
-      min: ({ min }: YupParams) => ({ key: TranslationKeys.ARRAY_MIN, values: { min } }),
-      max: ({ max }: YupParams) => ({ key: TranslationKeys.ARRAY_MAX, values: { max } }),
+      min: ({ min }: YupParams) => ({ key: TranslationKeys.MIN_ITEMS, values: { min }, meta }),
+      max: ({ max }: YupParams) => ({ key: TranslationKeys.MAX_ITEMS, values: { max }, meta }),
     },
   }
 
