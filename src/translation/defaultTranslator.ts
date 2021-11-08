@@ -1,6 +1,6 @@
 import { Translator } from '../types'
-import en from '../locales/en.json'
-import fr from '../locales/fr.json'
+import en from '../locales/en'
+import fr from '../locales/fr'
 
 type Language = keyof typeof locales
 
