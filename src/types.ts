@@ -1,5 +1,7 @@
 import Layout from './Layout.enum'
 
+export type Translation = string | { key: string, params?: Record<string, string>, meta?: Record<string, any> }
+
 /* form */
 
 export type ConcreteFormContext = {
@@ -17,6 +19,8 @@ export type ConcreteFormConfig = {
     [Layout.Label]?: React.ElementType<LabelLayoutProps>
     [Layout.LabelledControl]?: React.ElementType<LabelledControlLayoutProps>
   }
+  language?: string
+  translator?: (translation: Translation) => string
 }
 
 export type FormHandler = {
@@ -46,7 +50,7 @@ export type ControlLayoutProps = {
 
 export type ErrorsLayoutProps = {
   name: string
-  errors: string[]
+  errors: Translation[]
 }
 
 export type ItemLabelLayoutProps = {
@@ -90,7 +94,7 @@ export type ReactOptGroupProps = React.DetailedHTMLProps<React.OptgroupHTMLAttri
 
 export type ControlState = {
   value: any
-  errors: string[]
+  errors: Translation[]
 }
 
 export type ControlBaseProps = {
