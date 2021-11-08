@@ -1,4 +1,4 @@
-import { useConcreteFormId } from '../context/concreteForm.context'
+import useConcreteFormId from './useConcreteFormId'
 
 const useControlLabelFor = (control: any) => {
   const formId = useConcreteFormId()

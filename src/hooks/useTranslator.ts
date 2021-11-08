@@ -1,5 +1,5 @@
 import { Translation } from '../types'
-import { useConcreteFormConfig } from '../context/concreteForm.context'
+import useConcreteFormConfig from './useConcreteFormConfig'
 import defaultTranslator from '../translation/defaultTranslator'
 
 const useTranslator = () => {

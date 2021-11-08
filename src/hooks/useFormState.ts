@@ -1,4 +1,4 @@
-import { useConcreteFormHandler } from '../context/concreteForm.context'
+import useConcreteFormHandler from './useConcreteFormHandler'
 
 const useFormState = () => useConcreteFormHandler().getFormState()
 export default useFormState

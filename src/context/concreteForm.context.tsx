@@ -1,21 +1,9 @@
-import { createContext, useContext, useMemo, useRef } from 'react'
+import { createContext, useMemo, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { ConcreteFormContext as ConcreteFormContextType } from '../types'
+import { ConcreteFormContextType } from '../types'
 
-const ConcreteFormContext = createContext<ConcreteFormContextType|null>(null)
-
-const useConcreteFormContext = (): ConcreteFormContextType => {
-  const context = useContext(ConcreteFormContext)
-  if (!context) {
-    throw new Error('Missing form context. Did you forget to use <Form /> ?')
-  }
-  return context
-}
-
-export const useConcreteFormHandler = () => useConcreteFormContext().formHandler
-export const useConcreteFormConfig = () => useConcreteFormContext().config
-export const useConcreteFormId = () => useConcreteFormContext().id
+export const ConcreteFormContext = createContext<ConcreteFormContextType|null>(null)
 
 export const ConcreteFormProvider: React.FC<Omit<ConcreteFormContextType, 'id'>> = ({
   formHandler,

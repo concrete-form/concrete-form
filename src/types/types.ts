@@ -5,7 +5,7 @@ export type Translator = (translation: Translation) => string
 
 /* form */
 
-export type ConcreteFormContext = {
+export type ConcreteFormContextType = {
   config: ConcreteFormConfig
   formHandler: FormHandler
   id: string

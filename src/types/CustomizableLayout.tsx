@@ -1,4 +1,4 @@
-import { useConcreteFormConfig } from './context/concreteForm.context'
+import useConcreteFormConfig from '../hooks/useConcreteFormConfig'
 
 type LayoutProps = {
   type: string

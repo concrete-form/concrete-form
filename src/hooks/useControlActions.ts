@@ -1,4 +1,4 @@
-import { useConcreteFormHandler } from '../context/concreteForm.context'
+import useConcreteFormHandler from './useConcreteFormHandler'
 
 const useControlActions = (name: string) => {
   const handler = useConcreteFormHandler()

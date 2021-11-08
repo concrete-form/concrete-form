@@ -1,4 +1,5 @@
-import { useConcreteFormHandler, useConcreteFormId } from '../context/concreteForm.context'
+import useConcreteFormHandler from './useConcreteFormHandler'
+import useConcreteFormId from './useConcreteFormId'
 import { ControlProps } from '../types'
 import { mergeEventHandlers } from '../util/events'
 import useFormState from './useFormState'
