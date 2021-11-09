@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from 'react'
 
-import { ControlProps, CustomControlParameters } from '../types'
-import { mergeEventHandlers, removeEventHandlers, extractEventHandlers } from '../util/events'
-import useControlProps from './useControlProps'
-import useControlState from './useControlState'
-import useControlActions from './useControlActions'
+import { ControlProps, CustomControlParameters } from '../../types'
+import { mergeEventHandlers, removeEventHandlers, extractEventHandlers } from '../../util/events'
+import useControlProps from '../useControlProps'
+import useControlState from '../useControlState'
+import useControlActions from '../useControlActions'
 
 const useCustomControlProps = (
   name: string,
@@ -37,6 +37,7 @@ const useCustomControlProps = (
 
   const onInputValueChange = (event: React.ChangeEvent<any>) => {
     let newValue: any
+
     switch (inputProps?.type) {
       case 'checkbox':
       case 'radio':
