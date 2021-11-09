@@ -1,6 +1,6 @@
-import { Translation } from '../types'
-import useConcreteFormConfig from './useConcreteFormConfig'
-import defaultTranslator from '../translation/defaultTranslator'
+import { Translation } from '../../types'
+import useConcreteFormConfig from '../useConcreteFormConfig'
+import defaultTranslator from '../../translation/defaultTranslator'
 
 const useTranslator = () => {
   const { translator: customTranslator, language } = useConcreteFormConfig()
