@@ -1,13 +1,13 @@
-import useConcreteFormHandler from './useConcreteFormHandler'
-import useConcreteFormId from './useConcreteFormId'
-import { ControlProps } from '../types'
-import { mergeEventHandlers } from '../util/events'
-import useFormState from './useFormState'
-import useControlState from './useControlState'
+import useConcreteFormHandler from '../useConcreteFormHandler'
+import useConcreteFormId from '../useConcreteFormId'
+import { ControlProps } from '../../types'
+import { mergeEventHandlers } from '../../util/events'
+import useFormState from '../useFormState'
+import useControlState from '../useControlState'
 
 const useControlProps = (
   name: string,
-  controlProps: Omit<ControlProps, 'name'>,
+  controlProps: Omit<ControlProps, 'name'> = {},
   group = false,
 ) => {
   const formId = useConcreteFormId()
