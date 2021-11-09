@@ -5,6 +5,7 @@ type YupParams = Record<string, any>
 
 const setupYupLocale = () => {
   const meta = { from: 'yup' }
+  /* istanbul ignore next */
   const yupLocale = {
     mixed: {
       default: () => ({ key: TranslationKeys.DEFAULT, meta }),
