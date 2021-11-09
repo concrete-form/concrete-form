@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
-import { ConcreteFormContext } from '../context/concreteForm.context'
-import { ConcreteFormContextType } from '../types'
+import { ConcreteFormContext } from '../../context/concreteForm.context'
+import { ConcreteFormContextType } from '../../types'
 
 const useConcreteFormContext = (): ConcreteFormContextType => {
   const context = useContext(ConcreteFormContext)
