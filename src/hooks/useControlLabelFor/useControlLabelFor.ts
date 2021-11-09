@@ -1,4 +1,4 @@
-import useConcreteFormId from './useConcreteFormId'
+import useConcreteFormId from '../useConcreteFormId'
 
 const useControlLabelFor = (control: any) => {
   const formId = useConcreteFormId()
@@ -16,7 +16,7 @@ const useControlLabelFor = (control: any) => {
     'Input',
     'Select',
     'Slider',
-    'Textare',
+    'Textarea',
   ].includes(controlType)) {
     return
   }
