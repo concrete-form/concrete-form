@@ -116,7 +116,7 @@ export type LabelledChoice<C, L> = {
   props?: C
 }
 
-export type Choice<C, L> = string | LabelledChoice<C, L>
+export type Choice<C, L> = L | LabelledChoice<C, L>
 
 export type GroupChoices<G, C, L> = {
   group: L
