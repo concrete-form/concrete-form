@@ -43,10 +43,10 @@ const parseGroups = (items?: Array<Choice<any, any> | GroupChoices<any, any, any
     return []
   }
   return items.map(item => {
-    if ((item as any)?.options) {
+    if (item?.options) {
       return parseGroup(item as GroupChoices<any, any, any>)
     }
-    return parseOption(item as Choice<any, any>)
+    return parseOption(item)
   })
 }
 
