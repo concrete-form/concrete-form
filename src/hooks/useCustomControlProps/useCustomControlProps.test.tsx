@@ -187,4 +187,16 @@ describe('useCustomControlProps', () => {
 
     expect(controlProps.onChange).toHaveBeenCalled()
   })
+
+  it('print a console warning when "formatInitialValue" is enabled without proving "outgoingDataFormatter"', () => {
+    const originalConsoleWarn = console.warn
+    console.warn = jest.fn()
+
+    const controlProps = { name: 'foo', formatInitialValue: true }
+    renderCustomControlProps(controlProps).result.current as any
+
+    expect(console.warn).toHaveBeenCalledWith('"formatInitialValue" has no effect when "outgoingDataFormatter" is undefined')
+
+    console.warn = originalConsoleWarn
+  })
 })
