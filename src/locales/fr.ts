@@ -8,8 +8,6 @@ const translations = {
   maxlength: 'ce champ doit contenir {{max}} caractères maximum',
   email: 'ce champ doit correspondre à une adresse de courriel valide',
   url: 'ce champ doit être une URL valide',
-  lowercase: 'ce champ doit être une chaîne en minuscules',
-  uppercase: 'ce champ doit être une chaîne en majuscules',
   min: 'ce champ doit avoir une valeur supérieure ou égale à {{min}}',
   max: 'ce champ doit avoir une valeur inférieure ou égale à {{max}}',
   'less-than': 'ce champ doit avoir une valeur inférieure à {{less}}',
