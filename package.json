@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/core",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "author": "Kevin Gilbert",
   "description": "The most popular React form libraries implemented for you",
   "keywords": [
@@ -42,7 +42,7 @@
   },
   "peerDependencies": {
     "react": ">=16.0.0",
-    "yup": ">=0.28.1"
+    "yup": ">=0.32.0"
   },
   "peerDependenciesMeta": {
     "yup": {
