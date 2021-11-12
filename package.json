@@ -37,7 +37,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "peerDependencies": {
-    "react": ">=16.0.0",
+    "react": ">=16.8.0",
     "yup": ">=0.32.0"
   },
   "peerDependenciesMeta": {
