@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/core",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "author": "Kevin Gilbert",
   "description": "The most popular React form libraries implemented for you",
   "keywords": [
@@ -19,6 +19,7 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "build": "yarn build:clean && yarn build:transpile && yarn build:types && yarn build:prepare",
     "build:clean": "rimraf dist",
