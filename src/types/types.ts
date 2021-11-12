@@ -1,6 +1,6 @@
 import Layout from './Layout.enum'
 
-export type Translation = string | { key: string, values?: Record<string, string>, meta?: Record<string, any> }
+export type Translation = string | { key: string, values?: Record<string, string|number>, meta?: Record<string, any> }
 export type Translator = (translation: Translation) => string
 
 /* form */
@@ -20,6 +20,7 @@ export type ConcreteFormConfig = {
     [Layout.Label]?: React.ElementType<LabelLayoutProps>
     [Layout.LabelledControl]?: React.ElementType<LabelledControlLayoutProps>
   }
+  disableWhileSubmitting?: boolean
   language?: string
   translator?: Translator
 }

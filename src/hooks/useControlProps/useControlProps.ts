@@ -1,8 +1,8 @@
 import useConcreteFormHandler from '../useConcreteFormHandler'
+import useConcreteFormConfig from '../useConcreteFormConfig'
 import useConcreteFormId from '../useConcreteFormId'
 import { ControlProps } from '../../types'
 import { mergeEventHandlers } from '../../util/events'
-import useFormState from '../useFormState'
 import useControlState from '../useControlState'
 
 const useControlProps = (
@@ -10,13 +10,15 @@ const useControlProps = (
   controlProps: Omit<ControlProps, 'name'> = {},
   group = false,
 ) => {
+  const formHandler = useConcreteFormHandler()
+  const { disableWhileSubmitting } = useConcreteFormConfig()
+
   const formId = useConcreteFormId()
-  const { isSubmitting } = useFormState()
   const { errors } = useControlState(name)
   const { fieldProps, ...inputProps } = controlProps
-  const formHandlerProps = useConcreteFormHandler().getControlProps(name, fieldProps)
+  const isSubmitting = disableWhileSubmitting === false ? false : formHandler.getFormState().isSubmitting
+  const formHandlerProps = formHandler.getControlProps(name, fieldProps)
   const disabled = formHandlerProps.disabled || inputProps?.disabled || isSubmitting
-
   const id = group ? undefined : `${formId}-${name}`
 
   return {

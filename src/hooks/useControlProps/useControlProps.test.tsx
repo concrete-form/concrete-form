@@ -1,5 +1,6 @@
 import renderHook from '../../testkit/renderHook'
 import useControlProps from './useControlProps'
+import { ConcreteFormConfig } from '../../types'
 
 const mockEvent = { defaultPrevented: false, persist: jest.fn() }
 
@@ -8,7 +9,8 @@ const renderControlProps = (
   controlProps?: any,
   group?: boolean,
   formHandlerOptions?: {},
-) => renderHook(() => useControlProps(name, controlProps, group), { formHandlerOptions })
+  concreteFormConfig?: ConcreteFormConfig,
+) => renderHook(() => useControlProps(name, controlProps, group), { formHandlerOptions, concreteFormConfig })
 
 describe('useControlProps', () => {
   it('returns an id', () => {
@@ -88,8 +90,23 @@ describe('useControlProps', () => {
     expect(props.disabled).toBe(true)
   })
 
-  it('is disabled when the form is submitting', () => {
-    const props = renderControlProps('foo', {}, false, { form: { isSubmitting: true } }).result.current as Record<string, any>
-    expect(props.disabled).toBe(true)
+  describe('with config disableWhileSubmitting = true (default)', () => {
+    it('is disabled when the form is submitting', () => {
+      const props = renderControlProps('foo', {}, false, { form: { isSubmitting: true } }).result.current as Record<string, any>
+      expect(props.disabled).toBe(true)
+    })
+  })
+
+  describe('with config disableWhileSubmitting = false', () => {
+    it('is not disabled when the form is submitting', () => {
+      const props = renderControlProps(
+        'foo',
+        {},
+        false,
+        { form: { isSubmitting: true } },
+        { disableWhileSubmitting: false },
+      ).result.current as Record<string, any>
+      expect(props.disabled).toBe(false)
+    })
   })
 })
