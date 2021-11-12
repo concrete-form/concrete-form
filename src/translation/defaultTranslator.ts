@@ -2,10 +2,9 @@ import { Translator } from '../types'
 import en from '../locales/en'
 import fr from '../locales/fr'
 
-type Language = keyof typeof locales
-
 const locales = { en, fr }
-const defaultLanguage = Object.keys(locales)[0] as Language
+type Language = keyof typeof locales
+const defaultLanguage = Object.keys(locales)[0]
 
 export const translator = (language: string = defaultLanguage): Translator => {
   if (!Object.keys(locales).includes(language)) {
@@ -16,8 +15,8 @@ export const translator = (language: string = defaultLanguage): Translator => {
       return item
     }
 
-    const translations = locales[language as Language] as unknown as Record<string, string>
-    const translatedString: string|undefined = translations[item.key]
+    const translations = locales[language as Language]
+    const translatedString: string|undefined = translations[item.key as keyof typeof translations]
 
     if (typeof translatedString === 'string') {
       return applyValues(translatedString, item.values)
@@ -27,11 +26,11 @@ export const translator = (language: string = defaultLanguage): Translator => {
   }
 }
 
-const applyValues = (string: string, values: Record<string, string> = {}) => {
+const applyValues = (string: string, values = {}) => {
   let translatedString = string
 
   Object.entries(values).forEach(([key, value]) => {
-    translatedString = translatedString.replace(new RegExp(`{{ *${key} *}}`, 'g'), value)
+    translatedString = translatedString.replace(new RegExp(`{{ *${key} *}}`, 'g'), String(value))
   })
 
   translatedString = translatedString.replace(/{{.*}}/, '')
