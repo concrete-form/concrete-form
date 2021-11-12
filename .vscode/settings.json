@@ -1,7 +1,6 @@
 {
   "eslint.workingDirectories": [
     "./",
-    "./demo/"
   ],
   "search.exclude": {
     "**/build": true,
