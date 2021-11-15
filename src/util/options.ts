@@ -37,7 +37,7 @@ export const parseRadioOptions = (options?: Array<Choice<ReactInputProps, React.
 export const getRadioProps = (value: string, controlProps: Record<string, any>) => ({
   ...controlProps,
   value,
-  checked: typeof controlProps.value !== 'undefined' && controlProps.value === value ? true : undefined,
+  checked: typeof controlProps.value === 'undefined' ? undefined : controlProps.value === value,
   type: 'radio',
 })
 
@@ -48,7 +48,7 @@ export const parseCheckboxOptions = (options?: Array<Choice<ReactInputProps, Rea
 export const getCheckboxProps = (value: string, controlProps: Record<string, any>) => ({
   ...controlProps,
   value,
-  checked: typeof controlProps.value !== 'undefined' && controlProps.value?.includes(value) ? true : undefined,
+  checked: typeof controlProps.value === 'undefined' ? undefined : controlProps.value?.includes(value),
   type: 'checkbox',
 })
 

@@ -109,7 +109,7 @@ describe('options util', () => {
     describe('controlled input', () => {
       it('returns the radio props', () => {
         const props = getRadioProps('foo', { value: 'bar', disabled: true })
-        expect(props).toEqual({ disabled: true, value: 'foo', checked: undefined, type: 'radio' })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: false, type: 'radio' })
       })
 
       it('returns "checked" when control is checked', () => {
@@ -130,7 +130,7 @@ describe('options util', () => {
     describe('controlled input', () => {
       it('returns the checkbox props', () => {
         const props = getCheckboxProps('foo', { value: ['bar', 'baz'], disabled: true })
-        expect(props).toEqual({ disabled: true, value: 'foo', checked: undefined, type: 'checkbox' })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: false, type: 'checkbox' })
       })
 
       it('returns "checked" when control is checked', () => {
