@@ -34,9 +34,23 @@ export const parseRadioOptions = (options?: Array<Choice<ReactInputProps, React.
   return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
 }
 
+export const getRadioProps = (value: string, controlProps: Record<string, any>) => ({
+  ...controlProps,
+  value,
+  checked: typeof controlProps.value !== 'undefined' && controlProps.value === value ? true : undefined,
+  type: 'radio',
+})
+
 export const parseCheckboxOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>) => {
   return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
 }
+
+export const getCheckboxProps = (value: string, controlProps: Record<string, any>) => ({
+  ...controlProps,
+  value,
+  checked: typeof controlProps.value !== 'undefined' && controlProps.value?.includes(value) ? true : undefined,
+  type: 'checkbox',
+})
 
 const parseGroups = (items?: Array<Choice<any, any> | GroupChoices<any, any, any>>): FormattedOptions<any, any, any> => {
   if (!items || items?.length === 0) {

@@ -1,4 +1,10 @@
-import { parseSelectOptions, parseRadioOptions, parseCheckboxOptions } from './options'
+import {
+  parseSelectOptions,
+  parseRadioOptions,
+  parseCheckboxOptions,
+  getRadioProps,
+  getCheckboxProps,
+} from './options'
 
 describe('options util', () => {
   describe('parseSelectOptions', () => {
@@ -89,6 +95,48 @@ describe('options util', () => {
 
     it('parse <input type="checkbox" /> options', () => {
       expect(parseCheckboxOptions(radioAndCheckboxOptions)).toEqual(radioAndCheckboxExpected)
+    })
+  })
+
+  describe('getRadioProps', () => {
+    describe('uncontrolled input', () => {
+      it('returns the radio props', () => {
+        const props = getRadioProps('foo', { disabled: true })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: undefined, type: 'radio' })
+      })
+    })
+
+    describe('controlled input', () => {
+      it('returns the radio props', () => {
+        const props = getRadioProps('foo', { value: 'bar', disabled: true })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: undefined, type: 'radio' })
+      })
+
+      it('returns "checked" when control is checked', () => {
+        const props = getRadioProps('foo', { value: 'foo', disabled: true })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: true, type: 'radio' })
+      })
+    })
+  })
+
+  describe('getCheckboxProps', () => {
+    describe('uncontrolled input', () => {
+      it('returns the checkbox props', () => {
+        const props = getCheckboxProps('foo', { disabled: true })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: undefined, type: 'checkbox' })
+      })
+    })
+
+    describe('controlled input', () => {
+      it('returns the checkbox props', () => {
+        const props = getCheckboxProps('foo', { value: ['bar', 'baz'], disabled: true })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: undefined, type: 'checkbox' })
+      })
+
+      it('returns "checked" when control is checked', () => {
+        const props = getCheckboxProps('foo', { value: ['bar', 'foo', 'baz'], disabled: true })
+        expect(props).toEqual({ disabled: true, value: 'foo', checked: true, type: 'checkbox' })
+      })
     })
   })
 })
