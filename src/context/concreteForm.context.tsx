@@ -1,4 +1,4 @@
-import { createContext, useMemo, useRef } from 'react'
+import { createContext, useRef } from 'react'
 import generateId from '../util/generateId'
 
 import { ConcreteFormContextType } from '../types'
@@ -11,14 +11,14 @@ export const ConcreteFormProvider: React.FC<Omit<ConcreteFormContextType, 'id'>>
   children,
 }) => {
   const id = useRef(generateId())
-  const value = useMemo(() => ({
-    id: id.current,
-    formHandler,
-    config,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [config])
   return (
-    <ConcreteFormContext.Provider value={value}>
+    <ConcreteFormContext.Provider
+      value={{
+        id: id.current,
+        formHandler,
+        config,
+      }}
+    >
       { children }
     </ConcreteFormContext.Provider>
   )
