@@ -46,8 +46,8 @@ export type ConcreteFormProps = {
 
 export type ControlLayoutProps = {
   name: string
-  control: React.ReactElement
-  errors?: React.ReactElement
+  control: React.ReactNode
+  errors?: React.ReactNode
 }
 
 export type ErrorsLayoutProps = {
@@ -57,25 +57,25 @@ export type ErrorsLayoutProps = {
 
 export type ItemLabelLayoutProps = {
   name: string
-  control: React.ReactElement
-  label: React.ReactElement
+  control: React.ReactNode
+  label: React.ReactNode
   labelPosition?: Position
 }
 
 export type ItemsGroupLayoutProps = {
   name: string
-  items: React.ReactElement
+  items: React.ReactNode
   orientation?: Orientation
 }
 
 export type LabelLayoutProps = {
-  label: React.ReactElement
+  label: React.ReactNode
   htmlFor?: string
 }
 
 export type LabelledControlLayoutProps = {
-  control: React.ReactElement
-  label: React.ReactElement
+  control: React.ReactNode
+  label: React.ReactNode
   labelPosition?: Position
 }
 
@@ -136,7 +136,7 @@ export type CheckboxProps<C, L> = {
 } & ControlBaseProps
 
 export type CustomControlProps = {
-  render?: (props: any) => React.ReactElement<any, any>
+  render?: (props: any) => React.ReactElement
 } & ControlBaseProps & CustomControlParameters
 
 export type DateTimeProps = {
