@@ -46,8 +46,8 @@ export type ConcreteFormProps = {
 
 export type ControlLayoutProps = {
   name: string
-  control: React.ElementType
-  errors?: React.ElementType
+  control: React.ReactElement
+  errors?: React.ReactElement
 }
 
 export type ErrorsLayoutProps = {
@@ -57,25 +57,25 @@ export type ErrorsLayoutProps = {
 
 export type ItemLabelLayoutProps = {
   name: string
-  control: React.ElementType
-  label: React.ElementType
+  control: React.ReactElement
+  label: React.ReactElement
   labelPosition?: Position
 }
 
 export type ItemsGroupLayoutProps = {
   name: string
-  items: React.ElementType
+  items: React.ReactElement
   orientation?: Orientation
 }
 
 export type LabelLayoutProps = {
-  label: React.ElementType
+  label: React.ReactElement
   htmlFor?: string
 }
 
 export type LabelledControlLayoutProps = {
-  control: React.ElementType
-  label: React.ElementType
+  control: React.ReactElement
+  label: React.ReactElement
   labelPosition?: Position
 }
 
