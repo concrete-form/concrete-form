@@ -23,7 +23,7 @@ type FormattedOptions<G, O, L> = Array<FormattedOption<O, L> | FormattedGroup<G,
 
 export function parseSelectOptions<G, C, L> (
   options?: Array<Choice<C, L> | SingleLevelGroupChoices<G, C, L>>,
-  children?: unknown,
+  children?: React.ReactElement,
 ): FormattedOptions<G, C, L> {
   if (options && children) {
     throw new Error('a "Select" component with "options" cannot have children')

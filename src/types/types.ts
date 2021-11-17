@@ -193,13 +193,13 @@ type ControlPropsToMerge = {
 
 export type ControlProps = ControlPropsToMerge & (
   AutocompleteProps |
-  CheckboxProps<unknown, unknown> |
+  CheckboxProps<any, any> |
   CustomControlProps |
   DateTimeProps |
   FileInputProps |
   InputProps |
-  RadioProps<unknown, unknown> |
-  SelectProps<unknown, unknown, unknown> |
+  RadioProps<any, any> |
+  SelectProps<any, any, any> |
   SingleCheckboxProps |
   SliderProps |
   TextareaProps |
