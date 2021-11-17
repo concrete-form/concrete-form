@@ -19,7 +19,7 @@ type FormattedGroup<G, O, L> = {
   props?: G
 }
 
-type FormattedOptions<G, O, L> = Array< FormattedOption<O, L> | FormattedGroup<G, O, L> >
+type FormattedOptions<G, O, L> = Array<FormattedOption<O, L> | FormattedGroup<G, O, L>>
 
 export function parseSelectOptions<G, C, L> (
   options?: Array<Choice<C, L> | SingleLevelGroupChoices<G, C, L>>,
