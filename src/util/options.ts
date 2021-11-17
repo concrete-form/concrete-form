@@ -1,10 +1,8 @@
 import {
   Choice,
   GroupChoices,
+  LabelledChoice,
   SingleLevelGroupChoices,
-  ReactInputProps,
-  ReactOptionsProps,
-  ReactOptGroupProps,
 } from '../types'
 
 type FormattedOption<O, L> = {
@@ -23,15 +21,26 @@ type FormattedGroup<G, O, L> = {
 
 type FormattedOptions<G, O, L> = Array< FormattedOption<O, L> | FormattedGroup<G, O, L> >
 
-export const parseSelectOptions = (options?: Array<Choice<ReactOptionsProps, string|undefined> | SingleLevelGroupChoices<ReactOptGroupProps, ReactOptionsProps, string|undefined>>, children?: any) => {
+export function parseSelectOptions<G, C, L> (
+  options?: Array<Choice<C, L> | SingleLevelGroupChoices<G, C, L>>,
+  children?: unknown,
+): FormattedOptions<G, C, L> {
   if (options && children) {
     throw new Error('a "Select" component with "options" cannot have children')
   }
-  return parseGroups(options) as FormattedOptions<ReactOptGroupProps, ReactOptionsProps, string|undefined>
+  return parseGroups<G, C, L>(options)
 }
 
-export const parseRadioOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>) => {
-  return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
+export function parseRadioOptions<C, L> (
+  options?: Array<Choice<C, L>>,
+): Array<FormattedOption<C, L>> {
+  return parseOptions(options)
+}
+
+export function parseCheckboxOptions<C, L> (
+  options?: Array<Choice<C, L>>,
+): Array<FormattedOption<C, L>> {
+  return parseOptions(options)
 }
 
 export const getRadioProps = (value: string, controlProps: Record<string, any>) => ({
@@ -41,10 +50,6 @@ export const getRadioProps = (value: string, controlProps: Record<string, any>) 
   type: 'radio',
 })
 
-export const parseCheckboxOptions = (options?: Array<Choice<ReactInputProps, React.ReactNode>>) => {
-  return parseOptions(options) as Array<FormattedOption<ReactInputProps, React.ReactNode>>
-}
-
 export const getCheckboxProps = (value: string, controlProps: Record<string, any>) => ({
   ...controlProps,
   value,
@@ -52,19 +57,21 @@ export const getCheckboxProps = (value: string, controlProps: Record<string, any
   type: 'checkbox',
 })
 
-const parseGroups = (items?: Array<Choice<any, any> | GroupChoices<any, any, any>>): FormattedOptions<any, any, any> => {
+function parseGroups<G, C, L> (
+  items?: Array<Choice<C, L> | GroupChoices<G, C, L>>,
+): FormattedOptions<G, C, L> {
   if (!items || items?.length === 0) {
     return []
   }
   return items.map(item => {
-    if (item?.options) {
-      return parseGroup(item as GroupChoices<any, any, any>)
+    if ((item as GroupChoices<G, C, L>)?.options) {
+      return parseGroup<G, C, L>(item as GroupChoices<G, C, L>)
     }
-    return parseOption(item)
+    return parseOption<C, L>(item as Choice<C, L>)
   })
 }
 
-const parseGroup = (group: GroupChoices<any, any, any>): FormattedGroup<any, any, any> => {
+function parseGroup<G, C, L> (group: GroupChoices<G, C, L>): FormattedGroup<G, C, L> {
   return {
     type: 'group',
     label: group.group,
@@ -73,17 +80,17 @@ const parseGroup = (group: GroupChoices<any, any, any>): FormattedGroup<any, any
   }
 }
 
-const parseOptions = (items?: Array<Choice<any, any>>): Array<FormattedOption<any, any>> => {
+function parseOptions<C, L> (items?: Array<Choice<C, L>>): Array<FormattedOption<C, L>> {
   if (!items || items?.length === 0) {
     return []
   }
   return items.map(parseOption)
 }
 
-const parseOption = (option: Choice<any, any>): FormattedOption<any, any> => {
+function parseOption<C, L> (option: Choice<C, L>): FormattedOption<C, L> {
   const labelOption = typeof option === 'string' ? { label: option, value: option } : option
   return {
     type: 'option',
-    ...labelOption,
+    ...labelOption as LabelledChoice<C, L>,
   }
 }
