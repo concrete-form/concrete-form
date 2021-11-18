@@ -3,13 +3,13 @@ export const mergeEventHandlers = (...handlers: any[]) => {
   if (validHandlers.length === 0) {
     return
   }
-  return async (event: React.SyntheticEvent) => {
+  return async (event: any, ...extraProps: any) => {
     if (event.defaultPrevented) {
       return
     }
-    event.persist()
+    event?.persist()
     for (const handler of validHandlers) {
-      await handler(event)
+      await handler(event, ...extraProps)
       if (event.defaultPrevented) {
         return
       }
