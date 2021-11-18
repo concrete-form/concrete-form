@@ -15,7 +15,7 @@ const renderCustomControlProps = (hookProps: HookProps, contextProps = {}) => {
   const parameters = { incomingDataFormatter, outgoingDataFormatter, applyLocally, formatInitialValue }
 
   return renderHook(
-    () => useCustomControlProps(name, parameters, controlProps as any),
+    () => useCustomControlProps(name, parameters, Object.keys(controlProps).length > 0 ? controlProps as any : undefined),
     contextProps,
   )
 }

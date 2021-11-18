@@ -14,7 +14,7 @@ const useCustomControlProps = (
     applyLocally = false,
     formatInitialValue = false,
   }: CustomControlParameters,
-  controlProps: Omit<ControlProps, 'name'> & React.DetailedHTMLProps<React.InputHTMLAttributes<any>, any>,
+  controlProps: Omit<ControlProps, 'name'> = {},
 ) => {
   if (formatInitialValue && !outgoingDataFormatter) {
     console.warn('"formatInitialValue" has no effect when "outgoingDataFormatter" is undefined')
