@@ -4,13 +4,13 @@ export const mergeEventHandlers = (...handlers: any[]) => {
     return
   }
   return async (event: any, ...extraProps: any) => {
-    if (event.defaultPrevented) {
+    if (event?.defaultPrevented) {
       return
     }
     event?.persist()
     for (const handler of validHandlers) {
       await handler(event, ...extraProps)
-      if (event.defaultPrevented) {
+      if (event?.defaultPrevented) {
         return
       }
     }
