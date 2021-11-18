@@ -48,11 +48,13 @@ export type ControlLayoutProps = {
   name: string
   control: React.ReactNode
   errors?: React.ReactNode
+  [key: string]: any
 }
 
 export type ErrorsLayoutProps = {
   name: string
   errors: Translation[]
+  [key: string]: any
 }
 
 export type ItemLabelLayoutProps = {
@@ -60,23 +62,27 @@ export type ItemLabelLayoutProps = {
   control: React.ReactNode
   label: React.ReactNode
   labelPosition?: Position
+  [key: string]: any
 }
 
 export type ItemsGroupLayoutProps = {
   name: string
   items: React.ReactNode
   orientation?: Orientation
+  [key: string]: any
 }
 
 export type LabelLayoutProps = {
   label: React.ReactNode
   htmlFor?: string
+  [key: string]: any
 }
 
 export type LabelledControlLayoutProps = {
   control: React.ReactNode
   label: React.ReactNode
   labelPosition?: Position
+  [key: string]: any
 }
 
 /* controls internal state */
@@ -189,6 +195,7 @@ type ControlPropsToMerge = {
   onChange?: any
   onBlur?: any
   onInput?: any
+  [key: string]: any
 }
 
 export type ControlProps = ControlPropsToMerge & (
