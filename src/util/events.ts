@@ -7,7 +7,7 @@ export const mergeEventHandlers = (...handlers: any[]) => {
     if (event?.defaultPrevented) {
       return
     }
-    event?.persist()
+    event?.persist?.()
     for (const handler of validHandlers) {
       await handler(event, ...extraProps)
       if (event?.defaultPrevented) {
