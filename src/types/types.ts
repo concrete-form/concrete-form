@@ -30,6 +30,7 @@ export type FormHandler = {
   getControlProps: (name: string, options?: any) => any
   getControlState: (name: string) => ControlState
   setFieldValue: (name: string, value: any, shouldValidate?: boolean, shouldTouch?: boolean) => void
+  setFieldTouched: (name: string) => void
 }
 
 export type FormState = {

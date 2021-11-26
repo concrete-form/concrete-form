@@ -19,4 +19,19 @@ describe('useControlActions', () => {
       shouldTouch: true,
     })
   })
+
+  it('exposes setFieldTouched', () => {
+    const setFieldTouched = jest.fn()
+    const actions = renderHook(
+      () => useControlActions('foo'),
+      {
+        formHandlerOptions: { setFieldTouched },
+      },
+    ).result.current as { setFieldTouched: any }
+
+    actions.setFieldTouched('bar')
+    expect(setFieldTouched).toHaveBeenCalledWith({
+      name: 'foo',
+    })
+  })
 })
