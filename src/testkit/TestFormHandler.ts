@@ -33,12 +33,4 @@ export default class ReactHookFormHandler implements FormHandler {
       this.testState?.setFieldValue({ name, value, shouldValidate, shouldTouch })
     }
   }
-
-  public setFieldTouched (
-    name: string,
-  ) {
-    if (this.testState?.setFieldTouched) {
-      this.testState?.setFieldTouched({ name })
-    }
-  }
 }
