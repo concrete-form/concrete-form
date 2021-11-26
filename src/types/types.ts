@@ -53,7 +53,7 @@ export type ControlLayoutProps = {
 
 export type ErrorsLayoutProps = {
   name: string
-  errors: Translation[]
+  errors: string[]
   [key: string]: any
 }
 
