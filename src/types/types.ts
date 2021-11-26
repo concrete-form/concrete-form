@@ -129,7 +129,7 @@ export type Position = 'top' | 'bottom' | 'left' | 'right'
 
 /* exported labelled control */
 
-export type LabelledcontrolProps = Omit<LabelledControlLayoutProps, 'control'>
+export type LabelledControlProps = Omit<LabelledControlLayoutProps, 'control'>
 
 /* exported controls */
 
