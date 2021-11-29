@@ -236,8 +236,8 @@ describe('YupTranslator', () => {
 
     const received = await getErrors(schema, invalid)
     const expected = [
-      { key: TranslationKeys.MIN_ITEMS, values: { min: 3 }, meta: { from: 'yup', type: 'array', validation: 'min' } },
-      { key: TranslationKeys.MIN_ITEMS, values: { min: 3 }, meta: { from: 'yup', type: 'array', validation: 'min' } },
+      { key: TranslationKeys.MINLENGTH, values: { min: 3 }, meta: { from: 'yup', type: 'string', validation: 'min' } },
+      { key: TranslationKeys.MINLENGTH, values: { min: 3 }, meta: { from: 'yup', type: 'string', validation: 'min' } },
     ]
     expect(received).toEqual(expected)
   })

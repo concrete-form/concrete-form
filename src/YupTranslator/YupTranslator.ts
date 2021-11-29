@@ -50,7 +50,7 @@ const getValidationType = (field: any, test?: Test) => {
   if (['required', 'oneOf', 'notOneOf'].includes(testName)) {
     return 'mixed'
   }
-  return String(field?.type)
+  return String(field?.innerType?.type ?? field?.type)
 }
 
 /**
