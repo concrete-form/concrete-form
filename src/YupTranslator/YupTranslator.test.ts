@@ -226,6 +226,22 @@ describe('YupTranslator', () => {
     expect(received).toEqual(expected)
   })
 
+  it('handle array inner type validations', async () => {
+    const schema = new YupTranslator(Yup.object({
+      test: Yup.array().of(Yup.string().min(3)).min(1).required(),
+    }))
+    const invalid = {
+      test: ['fo', 'ba'],
+    }
+
+    const received = await getErrors(schema, invalid)
+    const expected = [
+      { key: TranslationKeys.MIN_ITEMS, values: { min: 3 }, meta: { from: 'yup', type: 'array', validation: 'min' } },
+      { key: TranslationKeys.MIN_ITEMS, values: { min: 3 }, meta: { from: 'yup', type: 'array', validation: 'min' } },
+    ]
+    expect(received).toEqual(expected)
+  })
+
   it('keeps existing translations', async () => {
     const schema = new YupTranslator(Yup.object().shape({
       mixed: Yup.string().oneOf(['a', 'b'], 'error1'),

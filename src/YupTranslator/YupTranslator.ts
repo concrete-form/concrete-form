@@ -109,11 +109,12 @@ const getList = (set: Set<any>) => {
  */
 const getTests = (field: any) => {
   const tests = field?.tests
+  const innerTests = field?.innerType?.tests ?? []
   const typeError = field?._typeError
   const whitelistError = field?._whitelistError
   const blacklistError = field?._blacklistError
 
-  const fullList = [...tests]
+  const fullList = [...tests, ...innerTests]
 
   fullList.push(typeError)
 
@@ -141,7 +142,7 @@ const replaceTypeErrorMessage = (schema: Yup.AnyObjectSchema) => {
 }
 
 /**
- * parse and replace Yup translations with generic and concrete-form compatible ones
+ * parse and replace Yup translations with generic ones
  */
 const replaceDefaultLocales = (schema: Yup.AnyObjectSchema): Yup.AnyObjectSchema => {
   replaceTypeErrorMessage(schema)
