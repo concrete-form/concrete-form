@@ -50,6 +50,7 @@ const getValidationType = (field: any, test?: Test) => {
   if (['required', 'oneOf', 'notOneOf'].includes(testName)) {
     return 'mixed'
   }
+  // fixme : we should only read "field?.innerType?.type" when we're parsing an inner field
   return String(field?.innerType?.type ?? field?.type)
 }
 
