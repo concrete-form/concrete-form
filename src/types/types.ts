@@ -135,7 +135,7 @@ export type LabelledControlProps = Omit<LabelledControlLayoutProps, 'control'>
 
 export type AutocompleteProps = ControlBaseProps
 
-export type CheckboxProps<C, L> = {
+export type CheckboxesGroupProps<C, L> = {
   options?: Array<Choice<C, L>>
   orientation?: Orientation
   labelPosition?: Position
@@ -153,7 +153,7 @@ export type FileInputProps = ControlBaseProps
 
 export type InputProps = ControlBaseProps
 
-export type RadioProps<C, L> = {
+export type RadiosGroupProps<C, L> = {
   options?: Array<Choice<C, L>>
   orientation?: Orientation
   labelPosition?: Position
@@ -200,12 +200,12 @@ type ControlPropsToMerge = {
 
 export type ControlProps = ControlPropsToMerge & (
   AutocompleteProps |
-  CheckboxProps<any, any> |
+  CheckboxesGroupProps<any, any> |
   CustomControlProps |
   DateTimeProps |
   FileInputProps |
   InputProps |
-  RadioProps<any, any> |
+  RadiosGroupProps<any, any> |
   SelectProps<any, any, any> |
   SingleCheckboxProps |
   SliderProps |

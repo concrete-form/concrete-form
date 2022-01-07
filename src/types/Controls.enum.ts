@@ -1,11 +1,11 @@
 enum Controls {
   Autocomplete,
-  Checkbox,
+  CheckboxesGroup,
   CustomControl,
   DateTime,
   FileInput,
   Input,
-  Radio,
+  RadiosGroup,
   Select,
   SingleCheckbox,
   Slider,
