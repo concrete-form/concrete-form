@@ -56,7 +56,7 @@ describe('options util', () => {
         },
       ]
 
-      expect(parseSelectOptions(options)).toEqual(expected)
+      expect(parseSelectOptions<any, any, any>(options)).toEqual(expected)
     })
   })
 
