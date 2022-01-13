@@ -34,10 +34,11 @@
 ---
 
 ## Installation
-[Check the installation helper](https://concrete-form.com/docs/getting-started/install)
+<a href="https://concrete-form.com/docs/getting-started/install" target="_blank">Check the installation helper</a>
 
 ## Example
-> [Material-UI](https://mui.com/) [TextField](https://mui.com/components/text-fields/) connected with [React hook form](https://react-hook-form.com)
+> <a href="https://mui.com" target="_blank">Material-UI</a> <a href="https://mui.com/components/text-fields/" target="_blank">TextField</a> connected with <a href="https://react-hook-form.com" target="_blank">React hook form</a>
+
 
 Concrete Form fill the implementation gap between form libraries and UI libraries. No more boilerplate !
 
@@ -53,6 +54,8 @@ const Demo = () => (
   </Form>
 )
 ```
+
+Live example on <a href="https://codesandbox.io/s/fast-lake-grxo5?file=/src/App.tsx" target="_blank">codesandbox</a> and on <a href="https://concrete-form.com/docs/#example" target="_blank">documentation site</a>
 
 ## Documentation
 https://concrete-form.com
