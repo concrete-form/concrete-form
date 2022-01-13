@@ -33,49 +33,26 @@
 
 ---
 
+## Installation
+[Check the installation helper](https://concrete-form.com/docs/getting-started/install)
+
 ## Example
-> [Material-UI](https://mui.com/) [TextField](https://mui.com/components/text-fields/) connected to [React hook form](https://react-hook-form.com)
+> [Material-UI](https://mui.com/) [TextField](https://mui.com/components/text-fields/) connected with [React hook form](https://react-hook-form.com)
+
+Concrete Form fill the implementation gap between form libraries and UI libraries. No more boilerplate !
 
 ```jsx
 import Form from '@concrete-form/react-hook-form'
-import { Input, SubmitButton } from '@concrete-form/material-ui'
+import Input from '@concrete-form/mui/Input'
+import SubmitButton from '@concrete-form/mui/SubmitButton'
 
-const App = () => (
-  <Form onSubmit={...}>
-    <Input name="name" placeholder="Enter your name" />
-    <SubmitButton>Send</SubmitButton>
+const Demo = () => (
+  <Form onSubmit={data => alert(data.name)}>
+    <Input name="name" label="Enter your name" margin="normal" />
+    <SubmitButton fullWidth>Submit</SubmitButton>
   </Form>
 )
 ```
 
-## **Concrete Form** in a nutshell
-1) Select the form provider you want (ex `React Hook Form`, `Formik`).
-2) Select the UI kit you want (ex `Material-UI`, `Materialize`).
-3) Enjoy. `Concrete Form` connects the form and the UI for you.
-
-## FAQ
-> What new form feature do I get ?
-
-**None.** Concrete form only take care of the rendering of the ui. Refer to your form prodiver doc.
-
-<br />
-
-> Can I implement custom form control ?
-
-**Absolutely**. The same way you would normally. (your existing custom controls will work without change too)
-
-<br />
-
-> Can I customize the UI ?
-
-**YES**. The rendering is higly customizable and follow the UI kits best practices.
-
-<br />
-
----
-
-<br />
-
-
-## Work in progress
-This library is not implemented yet. Poke me if you're curious and want to contribute !
+## Documentation
+https://concrete-form.com
