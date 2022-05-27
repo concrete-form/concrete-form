@@ -39,6 +39,7 @@ export type FormState = {
 }
 
 export type ConcreteFormProps = {
+  children?: React.ReactNode
   formProps?: React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
   noValidate?: boolean
 } & ConcreteFormConfig
@@ -46,6 +47,7 @@ export type ConcreteFormProps = {
 /* layout */
 
 export type ControlLayoutProps = {
+  children?: React.ReactNode
   name: string
   control: React.ReactNode
   errors?: React.ReactNode
@@ -53,12 +55,14 @@ export type ControlLayoutProps = {
 }
 
 export type ErrorsLayoutProps = {
+  children?: React.ReactNode
   name: string
   errors: string[]
   [key: string]: any
 }
 
 export type ItemLabelLayoutProps = {
+  children?: React.ReactNode
   name: string
   control: React.ReactNode
   label: React.ReactNode
@@ -67,6 +71,7 @@ export type ItemLabelLayoutProps = {
 }
 
 export type ItemsGroupLayoutProps = {
+  children?: React.ReactNode
   name: string
   items: React.ReactNode
   orientation?: Orientation
@@ -74,12 +79,14 @@ export type ItemsGroupLayoutProps = {
 }
 
 export type LabelLayoutProps = {
+  children?: React.ReactNode
   label: React.ReactNode
   htmlFor?: string
   [key: string]: any
 }
 
 export type LabelledControlLayoutProps = {
+  children?: React.ReactNode
   control: React.ReactNode
   label: React.ReactNode
   labelPosition?: Position
@@ -94,6 +101,7 @@ export type ControlState = {
 }
 
 export type ControlBaseProps = {
+  children?: React.ReactNode
   name: string
   fieldProps?: any
 }
