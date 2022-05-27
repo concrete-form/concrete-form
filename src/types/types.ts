@@ -6,6 +6,7 @@ export type Translator = (translation: Translation) => string
 /* form */
 
 export type ConcreteFormContextType = {
+  children?: React.ReactNode
   config: ConcreteFormConfig
   formHandler: FormHandler
   id: string

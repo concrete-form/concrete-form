@@ -1,4 +1,5 @@
-import { act } from '@testing-library/react-hooks'
+import { act } from '@testing-library/react'
+
 import renderHook from '../../testkit/renderHook'
 import useCustomControlProps from './useCustomControlProps'
 import { CustomControlParameters } from '../../types'

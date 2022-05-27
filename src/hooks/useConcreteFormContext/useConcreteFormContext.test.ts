@@ -1,4 +1,4 @@
-import { renderHook as testingLibraryRenderHook } from '@testing-library/react-hooks'
+import { renderHook as testingLibraryRenderHook } from '@testing-library/react'
 
 import renderHook from '../../testkit/renderHook'
 import useConcreteFormContext from './useConcreteFormContext'
@@ -10,6 +10,11 @@ describe('useConcreteFormContext', () => {
   })
 
   it('throws error when used outisde context', () => {
-    expect(testingLibraryRenderHook(useConcreteFormContext).result.error).toEqual(Error('Missing form context. Did you forget to use <Form /> ?'))
+    const spy = jest.spyOn(console, 'error')
+    spy.mockImplementation(() => {})
+
+    expect(() => testingLibraryRenderHook(useConcreteFormContext)).toThrowError(Error('Missing form context. Did you forget to use <Form /> ?'))
+
+    spy.mockRestore()
   })
 })

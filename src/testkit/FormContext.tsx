@@ -3,6 +3,7 @@ import { ConcreteFormProvider } from '../context/concreteForm.context'
 import TestFormHandler from './TestFormHandler'
 
 export type FormContextProps = {
+  children?: React.ReactNode
   concreteFormConfig?: ConcreteFormConfig
   formHandlerOptions?: {}
 }
