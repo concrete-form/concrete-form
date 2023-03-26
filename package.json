@@ -1,6 +1,6 @@
 {
     "name": "@concrete-form/core",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Kevin Gilbert",
     "description": "The most popular React form libraries implemented for you",
     "keywords": [
@@ -40,9 +40,9 @@
         "lint:fix": "yarn lint --fix"
     },
     "peerDependencies": {
-        "i18next": ">=22.4.8",
         "react": ">=18.0.0",
-        "yup": ">=0.32.11"
+        "yup": ">=0.32.11",
+        "i18next": ">=22.4.8"
     },
     "peerDependenciesMeta": {
         "yup": {

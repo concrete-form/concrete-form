@@ -1,6 +1,5 @@
-import i18n from 'i18next'
-
 import { Translator } from '../types'
+import i18n from 'i18next'
 
 type II18NextTranslatorOptions = {
   prefix?: string
