@@ -1,6 +1,6 @@
 {
     "name": "@concrete-form/core",
-    "version": "0.0.70",
+    "version": "1.0.0",
     "author": "Kevin Gilbert",
     "description": "The most popular React form libraries implemented for you",
     "keywords": [
@@ -9,7 +9,8 @@
         "react-hook-form",
         "formik",
         "material-ui",
-        "materialize"
+        "tailwind-css",
+        "daisy-ui"
     ],
     "repository": "concrete-form/concrete-form",
     "homepage": "https://concrete-form.com",
@@ -21,8 +22,8 @@
     "types": "./dist/index.d.ts",
     "sideEffects": false,
     "scripts": {
-        "build": "yarn build:clean && yarn build:transpile && yarn build:types && yarn build:prepare",
-        "build:clean": "rimraf dist",
+        "prebuild": "rimraf dist",
+        "build": "yarn build:transpile && yarn build:types && yarn build:prepare",
         "build:transpile": "concurrently \"yarn build:esm && yarn build:umd\" \"yarn build:cjs\"",
         "build:esm": "cross-env BABEL_ENV=esm babel --extensions \".js,.ts,.tsx\" src --out-dir dist --copy-files --no-copy-ignored",
         "build:cjs": "cross-env BABEL_ENV=cjs babel --extensions \".js,.ts,.tsx\" src --out-dir dist/cjs",
@@ -39,11 +40,15 @@
         "lint:fix": "yarn lint --fix"
     },
     "peerDependencies": {
-        "react": ">=16.8.0",
+        "i18next": ">=22.4.8",
+        "react": ">=18.0.0",
         "yup": ">=0.32.0"
     },
     "peerDependenciesMeta": {
         "yup": {
+            "optional": true
+        },
+        "i18next": {
             "optional": true
         }
     },
@@ -66,11 +71,12 @@
         "coveralls": "^3.1.1",
         "cross-env": "^7.0.3",
         "eslint-plugin-standard-cra": "^1.0.8",
-        "react": "^18.1.0",
-        "react-dom": "^18.1.0",
+        "i18next": "22.4.8",
+        "react": "18.0.0",
+        "react-dom": "18.0.0",
         "react-scripts": "5.0.1",
         "typescript": "^4.7.2",
-        "yup": "^0.32.11"
+        "yup": "0.32.0"
     },
     "eslintConfig": {
         "extends": [

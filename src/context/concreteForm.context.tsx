@@ -1,5 +1,4 @@
-import { createContext, useRef } from 'react'
-import generateId from '../util/generateId'
+import { createContext, useId } from 'react'
 
 import { ConcreteFormContextType } from '../types'
 
@@ -10,11 +9,11 @@ export const ConcreteFormProvider: React.FC<Omit<ConcreteFormContextType, 'id'>>
   config,
   children,
 }) => {
-  const id = useRef(generateId())
+  const id = useId()
   return (
     <ConcreteFormContext.Provider
       value={{
-        id: id.current,
+        id,
         formHandler,
         config,
       }}

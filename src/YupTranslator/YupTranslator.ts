@@ -1,4 +1,5 @@
 import * as Yup from 'yup'
+
 import TranslationKeys from '../translation/TranslationKeys.enum'
 
 type YupParams = Record<string, any>
@@ -188,6 +189,9 @@ const replaceDefaultLocales = (schema: Yup.AnyObjectSchema): Yup.AnyObjectSchema
   return schema
 }
 
+/**
+ * EXPERIMENTAL
+ */
 class Wrapper extends Yup.ObjectSchema<any> {
   constructor (objectSchema: Yup.AnyObjectSchema) {
     super(replaceDefaultLocales(objectSchema).fields)

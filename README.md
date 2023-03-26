@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Concrete Form" src="https://raw.githubusercontent.com/concrete-form/concrete-form/master/doc/logo.png" />
+  <img alt="Concrete Form" src="https://raw.githubusercontent.com/concrete-form/concrete-form/main/doc/logo.png" />
 </p>
 
 <p align="center">
@@ -11,8 +11,8 @@
 <div align="center">
   <img alt="Made with Typescript" style="margin:3px"
   src="https://img.shields.io/badge/Made%20with-Typescript-2f74c0?style=for-the-badge&logo=typescript&labelColor=#333" />
-  <img alt="Made for React 16+" style="margin:3px"
-  src="https://img.shields.io/badge/Made%20for-React%2016+-5ed3f3?style=for-the-badge&logo=react&labelColor=#333" />
+  <img alt="Made for React 18+" style="margin:3px"
+  src="https://img.shields.io/badge/Made%20for-React%2018+-5ed3f3?style=for-the-badge&logo=react&labelColor=#333" />
 </div>
 
 <div align="center">
@@ -34,7 +34,7 @@
 ---
 
 ## Installation
-<a href="https://concrete-form.com/docs/getting-started/install" target="_blank">Check the installation helper</a>
+<a href="https://concrete-form.com/docs/getting-started/install" target="_blank">Check the installation tool</a>
 
 ## Example
 > [Material-UI](https://mui.com/) [TextField](https://mui.com/components/text-fields/) connected with [React hook form](https://react-hook-form.com)
