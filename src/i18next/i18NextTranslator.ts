@@ -1,11 +1,12 @@
-import { Translator } from '../types'
 import i18n from 'i18next'
 
-type II18NextTranslatorOptions = {
+import { Translator } from '../types'
+
+type I18NextTranslatorOptions = {
   prefix?: string
 }
 
-const iI18NextTranslator = ({ prefix = 'formValidation' }: II18NextTranslatorOptions = {}): Translator => (item) => {
+const iI18NextTranslator = ({ prefix = 'formValidation' }: I18NextTranslatorOptions = {}): Translator => (item) => {
   if (typeof item === 'string') {
     return item
   }

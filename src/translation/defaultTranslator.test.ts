@@ -1,6 +1,6 @@
 import defaultTranslator from './defaultTranslator'
-import en from '../locales/en'
-import fr from '../locales/fr'
+import en from './defaultLocales/en'
+import fr from './defaultLocales/fr'
 
 describe('defaultTranslator', () => {
   it('supports english', () => {

@@ -1,8 +1,8 @@
 enum TranslationKeys {
   DEFAULT = 'default',
   REQUIRED = 'required',
-  ONE_OF = 'one-of',
-  NOT_ONE_OF = 'not-one-of',
+  ONE_OF = 'oneOf',
+  NOT_ONE_OF = 'notOneOf',
   LENGTH = 'length',
   MINLENGTH = 'minlength',
   MAXLENGTH = 'maxlength',
@@ -12,15 +12,16 @@ enum TranslationKeys {
   UPPERCASE = 'uppercase',
   MIN = 'min',
   MAX = 'max',
-  LESS_THAN = 'less-than',
-  MORE_THAN = 'more-than',
+  LESS_THAN = 'lessThan',
+  MORE_THAN = 'moreThan',
   POSITIVE = 'positive',
   NEGATIVE = 'negative',
   INTEGER = 'integer',
-  MIN_DATE = 'min-date',
-  MAX_DATE = 'max-date',
-  MIN_ITEMS = 'min-items',
-  MAX_ITEMS = 'max-items',
+  MIN_DATE = 'minDate',
+  MAX_DATE = 'maxDate',
+  ITEM_LENGTH = 'itemLength',
+  MIN_ITEMS = 'minItems',
+  MAX_ITEMS = 'maxItems',
 }
 
 export default TranslationKeys

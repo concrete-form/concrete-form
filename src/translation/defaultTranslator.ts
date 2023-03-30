@@ -1,6 +1,6 @@
 import { Translator } from '../types'
-import en from '../locales/en'
-import fr from '../locales/fr'
+import en from './defaultLocales/en'
+import fr from './defaultLocales/fr'
 
 const locales = { en, fr }
 type Language = keyof typeof locales

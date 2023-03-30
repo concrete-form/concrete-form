@@ -1,8 +1,8 @@
 import renderHook from '../../testkit/renderHook'
 import useTranslator from './useTranslator'
 import { Translator } from '../../types'
-import en from '../../locales/en'
-import fr from '../../locales/fr'
+import en from '../../translation/defaultLocales/en'
+import fr from '../../translation/defaultLocales/fr'
 
 describe('useTranslator', () => {
   it('returns default translator', () => {
