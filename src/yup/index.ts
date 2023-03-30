@@ -1,1 +1,1 @@
-export { default } from './setupYupGenericLocale'
+export { default as setupYupGenericLocale } from './setupYupGenericLocale'
