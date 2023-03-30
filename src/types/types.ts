@@ -28,7 +28,7 @@ export type ConcreteFormConfig = {
 
 export type FormHandler = {
   getFormState: () => FormState
-  getControlProps: (name: string, options?: any) => any
+  getControlProps: (name: string, group: boolean, options?: any) => any
   getControlState: (name: string) => ControlState
   setFieldValue: (name: string, value: any, shouldValidate?: boolean, shouldTouch?: boolean) => void
 }

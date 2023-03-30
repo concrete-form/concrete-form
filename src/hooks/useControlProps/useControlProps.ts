@@ -17,7 +17,7 @@ const useControlProps = (
   const { errors } = useControlState(name)
   const { fieldProps, ...inputProps } = controlProps
   const isSubmitting = disableWhileSubmitting === false ? false : formHandler.getFormState().isSubmitting
-  const formHandlerProps = formHandler.getControlProps(name, fieldProps)
+  const formHandlerProps = formHandler.getControlProps(name, group, fieldProps)
   const disabled = formHandlerProps.disabled || inputProps?.disabled || isSubmitting
   const id = group ? undefined : `${formId}-${name}`
 

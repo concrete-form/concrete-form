@@ -12,8 +12,8 @@ export default class ReactHookFormHandler implements FormHandler {
     }
   }
 
-  public getControlProps (name: string, options?: any) {
-    return { name, ...options, ...this.testState?.control?.props }
+  public getControlProps (name: string, group: boolean, options?: any) {
+    return { name, group, ...options, ...this.testState?.control?.props }
   }
 
   public getControlState (name: string) {
