@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import setupYupGenericLocale from './setupYupGenericLocale'
 import TranslationKeys from '../translation/TranslationKeys.enum'
 
-const getErrors = async (schema: Yup.AnyObjectSchema, values: any) => {
+const getErrors = async (schema: Yup.ObjectSchema<any>, values: any) => {
   let errors: any[] = []
   try {
     await schema.validate(values, { abortEarly: false })
